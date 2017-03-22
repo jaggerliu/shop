@@ -1,7 +1,7 @@
 /*
- * Copyright 2005-2013 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
+ *   
+ * Support: http://ni484sha.com
+ * 
  */
 package net.shopxx.controller.shop;
 
@@ -156,5 +156,28 @@ public class ProductController extends BaseController {
 	Long hits(@PathVariable Long id) {
 		return productService.viewHits(id);
 	}
+	
+	/**
+	 * 列表
+	 */
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(Long brandId, Long promotionId, Long[] tagIds, BigDecimal startPrice, BigDecimal endPrice, OrderType orderType, Integer pageNumber, Integer pageSize, HttpServletRequest request, ModelMap model) {
+		Brand brand = brandService.find(brandId);
+		Promotion promotion = promotionService.find(promotionId);
+		List<Tag> tags = tagService.findList(tagIds);
+		Pageable pageable = new Pageable(pageNumber, pageSize);
+		model.addAttribute("orderTypes", OrderType.values());
+		model.addAttribute("brand", brand);
+		model.addAttribute("promotion", promotion);
+		model.addAttribute("tags", tags);
+		model.addAttribute("startPrice", startPrice);
+		model.addAttribute("endPrice", endPrice);
+		model.addAttribute("orderType", orderType);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("page", productService.findPage(null, brand, promotion, tags, null, startPrice, endPrice, true, true, null, false, null, null, orderType, pageable));
+		return "/shop/index";
+	}
+
 
 }

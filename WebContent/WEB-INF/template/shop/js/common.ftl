@@ -3,7 +3,7 @@
  * Version: 3.0
  */
 
-var shopxx = {
+var shop = {
 	base: "${base}",
 	locale: "${locale}"
 };
@@ -133,7 +133,7 @@ function message(code) {
 	$.checkLogin = function() {
 		var result = false;
 		$.ajax({
-			url: shopxx.base + "/login/check.jhtml",
+			url: shop.base + "/login/check.jhtml",
 			type: "GET",
 			dataType: "json",
 			cache: false,
@@ -147,7 +147,7 @@ function message(code) {
 
 	// 跳转登录
 	$.redirectLogin = function (redirectUrl, message) {
-		var href = shopxx.base + "/login.jhtml";
+		var href = shop.base + "/login.jhtml";
 		if (redirectUrl != null) {
 			href += "?redirectUrl=" + encodeURIComponent(redirectUrl);
 		}

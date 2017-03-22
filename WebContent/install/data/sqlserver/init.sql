@@ -1,7 +1,7 @@
 -- SHOP++ INIT SQL
--- Copyright 2005-2013 shopxx.net. All rights reserved.
--- Support: http://www.shopxx.net
--- License: http://www.shopxx.net/license
+--   
+-- Support: http://ni484sha.com
+-- 
 
 -- 初始化数据库表结构 --
 

@@ -1,7 +1,7 @@
 /*
- * Copyright 2005-2013 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
+ *   
+ * Support: http://ni484sha.com
+ * 
  */
 package net.shopxx.service.impl;
 
@@ -74,7 +74,6 @@ public class StaticServiceImpl implements StaticService, ServletContextAware {
 	public int build(String templatePath, String staticPath, Map<String, Object> model) {
 		Assert.hasText(templatePath);
 		Assert.hasText(staticPath);
-		System.out.println(staticPath);
 		FileOutputStream fileOutputStream = null;
 		OutputStreamWriter outputStreamWriter = null;
 		Writer writer = null;

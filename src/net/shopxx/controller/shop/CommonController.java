@@ -1,11 +1,12 @@
 /*
- * Copyright 2005-2013 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
+ *   
+ * Support: http://ni484sha.com
+ * 
  */
 package net.shopxx.controller.shop;
 
 import java.awt.image.BufferedImage;
+import java.math.BigDecimal;
 import java.security.interfaces.RSAPublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +19,13 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.shopxx.Pageable;
 import net.shopxx.Setting;
 import net.shopxx.entity.Area;
+import net.shopxx.entity.Brand;
+import net.shopxx.entity.Promotion;
+import net.shopxx.entity.Tag;
+import net.shopxx.entity.Product.OrderType;
 import net.shopxx.service.AreaService;
 import net.shopxx.service.CaptchaService;
 import net.shopxx.service.RSAService;
@@ -29,6 +35,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
