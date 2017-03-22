@@ -1,7 +1,7 @@
 /*
- * Copyright 2005-2013 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
+ *   
+ * Support: http://ni484sha.com
+ * 
  */
 package net.shopxx.job;
 
@@ -31,7 +31,8 @@ public class OrderJob {
 	 */
 	@Scheduled(cron = "${job.order_release_stock.cron}")
 	public void releaseStock() {
-		orderService.releaseStock();
+		//没有订单不执行
+		//orderService.releaseStock();
 	}
 
 }

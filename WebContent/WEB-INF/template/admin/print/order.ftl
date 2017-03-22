@@ -191,7 +191,7 @@ $().ready(function() {
 					&nbsp;
 				</td>
 				<td colspan="2">
-					Powered By shopxx.net
+
 				</td>
 			</tr>
 		</table>

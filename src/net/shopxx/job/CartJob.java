@@ -1,7 +1,7 @@
 /*
- * Copyright 2005-2013 shopxx.net. All rights reserved.
- * Support: http://www.shopxx.net
- * License: http://www.shopxx.net/license
+ *   
+ * Support: http://ni484sha.com
+ * 
  */
 package net.shopxx.job;
 
@@ -31,7 +31,8 @@ public class CartJob {
 	 */
 	@Scheduled(cron = "${job.cart_evict_expired.cron}")
 	public void evictExpired() {
-		cartService.evictExpired();
+		//无购物车 不执行
+		//cartService.evictExpired();
 	}
 
 }
