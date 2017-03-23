@@ -1,12 +1,9 @@
-  <!--head-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap style -->
-    <link id="callCss" rel="stylesheet" href="${base}/resources/shop/themes/bootshop/bootstrap.min.css" media="screen" />
-    <link href="${base}/resources/shop/themes/css/base.css" rel="stylesheet" media="screen" />
-    <!-- Bootstrap style responsive -->
-    <link href="${base}/resources/shop/themes/css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="${base}/resources/shop/themes/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <!-- Google-code-prettify -->
-    <link href="${base}/resources/shop/themes/js/google-code-prettify/prettify.css" rel="stylesheet" />
-    <!-- fav and touch icons -->
-    <link rel="shortcut icon" href="${base}/resources/shop/themes/images/ico/favicon.ico">
+    <!-- CSS Part Start-->
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/js/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="${base}/resources/static/css/stylesheet-skin3.css" />
+    <!-- CSS Part End-->

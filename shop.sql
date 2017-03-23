@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: LJ2017-03-22 17:36:22
+Date: 2017-03-23 13:39:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,13 +35,15 @@ CREATE TABLE `zs_ad` (
   PRIMARY KEY (`id`),
   KEY `FK6D301C2E947C2F5` (`ad_position`),
   CONSTRAINT `FK6D301C2E947C2F5` FOREIGN KEY (`ad_position`) REFERENCES `zs_ad_position` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zs_ad
 -- ----------------------------
-INSERT INTO `zs_ad` VALUES ('12', '2017-03-22 15:32:35', '2017-03-22 15:32:35', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/54aeb399-0446-4edb-9c2f-1e4140627110.png', 'ad1', '1', null, '3');
-INSERT INTO `zs_ad` VALUES ('13', '2017-03-22 15:32:47', '2017-03-22 15:39:18', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/fe1ca74b-4a37-4745-bd74-827b41588a69.jpg', 'ad2', '1', null, '3');
+INSERT INTO `zs_ad` VALUES ('12', '2017-03-22 15:32:35', '2017-03-23 11:48:00', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/e167f008-86ab-4b4e-a1cb-37e3bad64dd0.jpg', 'ad1', '1', null, '3');
+INSERT INTO `zs_ad` VALUES ('13', '2017-03-22 15:32:47', '2017-03-23 11:48:32', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/333c2d3a-6a94-416e-8994-f728e8c6a4e2.jpg', 'ad2', '1', null, '3');
+INSERT INTO `zs_ad` VALUES ('14', '2017-03-23 11:53:46', '2017-03-23 11:53:46', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/239be820-5b94-4f20-94dd-a47b8d3f7683.jpg', '首页顶部右侧广告', '1', null, '10');
+INSERT INTO `zs_ad` VALUES ('15', '2017-03-23 11:54:07', '2017-03-23 11:55:10', null, null, null, null, 'http://localhost:8080/zshop/upload/image/201703/4d3c75c8-721f-4dd7-b2db-ce47e672ded5.jpg', '首页顶部右侧广告2', '1', null, '10');
 
 -- ----------------------------
 -- Table structure for zs_admin
@@ -69,7 +71,7 @@ CREATE TABLE `zs_admin` (
 -- ----------------------------
 -- Records of zs_admin
 -- ----------------------------
-INSERT INTO `zs_admin` VALUES ('1', '2017-03-17 00:03:36', '2017-03-22 14:31:07', '技术部', 'admin@shopxx.net', '', '\0', null, '2017-03-22 14:31:07', '0', null, '管理员', 'e10adc3949ba59abbe56e057f20f883e', 'admin');
+INSERT INTO `zs_admin` VALUES ('1', '2017-03-17 00:03:36', '2017-03-23 11:12:57', '技术部', 'admin@shopxx.net', '', '\0', null, '2017-03-23 11:12:57', '0', null, '管理员', 'e10adc3949ba59abbe56e057f20f883e', 'admin');
 
 -- ----------------------------
 -- Table structure for zs_admin_role
@@ -104,12 +106,13 @@ CREATE TABLE `zs_ad_position` (
   `template` longtext NOT NULL,
   `width` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zs_ad_position
 -- ----------------------------
-INSERT INTO `zs_ad_position` VALUES ('3', '2017-03-17 01:00:08', '2017-03-22 15:37:59', null, '290', '首页轮播广告', '<div id=\"myCarousel\" class=\"carousel slide\">\r\n    <div class=\"carousel-inner\">\r\n        [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == \"image\"]\r\n        <div class=\"item [#if ad_index == 0]active[/#if]\">\r\n            <div class=\"container\">\r\n                [#if ad.url??]\r\n                <a href=\"${ad.url}\"><img style=\"width:100%\" src=\"${ad.path}\" alt=\"${ad.title}\" title=\"${ad.title}\" /></a>\r\n                [#else]\r\n                <img style=\"width:100%\" src=\"${ad.path}\" alt=\"${ad.title}\" title=\"${ad.title}\" /> [/#if]\r\n                <div class=\"carousel-caption\">\r\n                    <h4>Second Thumbnail label</h4>\r\n                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        [/#if] [/#list]\r\n    </div>\r\n    <a class=\"left carousel-control\" href=\"#myCarousel\" data-slide=\"prev\">&lsaquo;</a>\r\n    <a class=\"right carousel-control\" href=\"#myCarousel\" data-slide=\"next\">&rsaquo;</a>\r\n</div>', '770');
+INSERT INTO `zs_ad_position` VALUES ('3', '2017-03-17 01:00:08', '2017-03-23 11:47:11', null, '290', '首页轮播广告', '<!-- Slideshow Start-->\r\n<div class=\"slideshow single-slider owl-carousel\">\r\n    [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == \"image\"]\r\n    <div class=\"item\">\r\n        [#if ad.url??]\r\n        <a href=\"${ad.url}\"><img class=\"img-responsive\" src=\"${ad.path}\" alt=\"${ad.title}\" style=\"width: 750px;height:400px\"/></a>\r\n        [#else]\r\n        <img class=\"img-responsive\" src=\"${ad.path}\" alt=\"${ad.title}\" style=\"width: 750px;height:400px\"/> [/#if]\r\n    </div>\r\n    [/#if] [/#list]\r\n</div>\r\n<!-- Slideshow End-->', '770');
+INSERT INTO `zs_ad_position` VALUES ('10', '2017-03-23 11:53:27', '2017-03-23 11:53:27', null, '185', '首页顶部右侧广告', '<div class=\"marketshop-banner\">\r\n    <div class=\"row\">\r\n        [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == \"image\"]\r\n        <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\r\n            [#if ad.url??]\r\n            <a href=\"${ad.url}\"><img title=\"sample-banner1\" alt=\"sample-banner1\" src=\"${ad.path}\" style=\"height: 185px;width: 365px\"></a>\r\n            [#else]\r\n            <img title=\"sample-banner1\" alt=\"sample-banner1\" src=\"${ad.path}\" style=\"height: 185px;width: 365px\"> [/#if]\r\n        </div>\r\n        [/#if] [#if ad_index > 2] [#break /] [/#if] [/#list]\r\n    </div>\r\n</div>', '365');
 
 -- ----------------------------
 -- Table structure for zs_area
@@ -4688,7 +4691,7 @@ INSERT INTO `zs_product` VALUES ('312', '2017-03-22 15:04:34', '2017-03-22 15:04
 INSERT INTO `zs_product` VALUES ('313', '2017-03-22 15:04:56', '2017-03-22 15:04:56', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Two PRO4', '0', 'http://localhost:8080/zshop/upload/image/201703/09031f38-2007-4976-8a53-0abc69b17e8e.jpg', null, '\0', '', '', '\0', null, '4.800000', null, '0', '2017-03-22 15:04:56', '0', '2017-03-22 15:04:56', 'TestCategory Two PRO4', '4', '4.000000', '0', '0', '0', null, null, null, '20170322715', null, null, '0', null, '0', '2017-03-22 15:04:56', '0', '2017-03-22 15:04:56', null, null, '75', '94');
 INSERT INTO `zs_product` VALUES ('314', '2017-03-22 15:05:23', '2017-03-22 15:05:23', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Thr PRO1', '0', 'http://localhost:8080/zshop/upload/image/201703/43dfcbf5-1a97-4718-98d0-6e409b2f7aab.jpg', null, '\0', '', '', '\0', null, '1.200000', null, '0', '2017-03-22 15:05:23', '0', '2017-03-22 15:05:23', 'TestCategory Thr PRO1', '1', '1.000000', '0', '0', '0', null, null, null, '20170322716', null, null, '0', null, '0', '2017-03-22 15:05:23', '0', '2017-03-22 15:05:23', null, null, '76', '95');
 INSERT INTO `zs_product` VALUES ('315', '2017-03-22 15:05:50', '2017-03-22 16:39:10', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Thr PRO2', '2', 'http://localhost:8080/zshop/upload/image/201703/3a358941-8ea0-48c3-a4d7-5ed07f9f0c5f.jpg', null, '\0', '', '', '\0', null, '2.400000', null, '2', '2017-03-22 16:39:10', '0', '2017-03-22 15:05:50', 'TestCategory Thr PRO2', '2', '2.000000', '0', '0', '0', null, null, null, '20170322717', null, null, '0', null, '2', '2017-03-22 16:39:10', '0', '2017-03-22 15:05:50', null, null, '77', '96');
-INSERT INTO `zs_product` VALUES ('316', '2017-03-22 15:06:22', '2017-03-22 15:06:22', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Thr PRO3', '0', 'http://localhost:8080/zshop/upload/image/201703/6744bc89-d8cb-4674-91b4-6abc69615f73.jpg', null, '\0', '', '', '\0', null, '3.600000', null, '0', '2017-03-22 15:06:22', '0', '2017-03-22 15:06:22', 'TestCategory Thr PRO3', '3', '3.000000', '0', '0', '0', null, null, null, '20170322718', null, null, '0', null, '0', '2017-03-22 15:06:22', '0', '2017-03-22 15:06:22', null, null, '78', '97');
+INSERT INTO `zs_product` VALUES ('316', '2017-03-22 15:06:22', '2017-03-23 09:52:38', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Thr PRO3', '1', 'http://localhost:8080/zshop/upload/image/201703/6744bc89-d8cb-4674-91b4-6abc69615f73.jpg', null, '\0', '', '', '\0', null, '3.600000', null, '1', '2017-03-23 09:52:38', '0', '2017-03-22 15:06:22', 'TestCategory Thr PRO3', '3', '3.000000', '0', '0', '0', null, null, null, '20170322718', null, null, '0', null, '1', '2017-03-23 09:52:38', '0', '2017-03-22 15:06:22', null, null, '78', '97');
 INSERT INTO `zs_product` VALUES ('317', '2017-03-22 15:06:50', '2017-03-22 15:06:50', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Four PRO1', '0', 'http://localhost:8080/zshop/upload/image/201703/e8157df3-8aa0-468c-9ca9-3ce308127712.jpg', null, '\0', '', '', '\0', null, '1.200000', null, '0', '2017-03-22 15:06:50', '0', '2017-03-22 15:06:50', 'TestCategory Four PRO1', '1', '1.000000', '0', '0', '0', null, null, null, '20170322719', null, null, '0', null, '0', '2017-03-22 15:06:50', '0', '2017-03-22 15:06:50', null, null, '79', '99');
 INSERT INTO `zs_product` VALUES ('318', '2017-03-22 15:07:09', '2017-03-22 15:07:09', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Four PRO2', '0', 'http://localhost:8080/zshop/upload/image/201703/099e2fa6-1ba3-4377-b250-5be779d7d180.jpg', null, '\0', '', '', '\0', null, '2.400000', null, '0', '2017-03-22 15:07:09', '0', '2017-03-22 15:07:09', 'TestCategory Four PRO2', '2', '2.000000', '0', '0', '0', null, null, null, '20170322720', null, null, '0', null, '0', '2017-03-22 15:07:09', '0', '2017-03-22 15:07:09', null, null, '80', '100');
 INSERT INTO `zs_product` VALUES ('319', '2017-03-22 15:07:33', '2017-03-22 15:07:33', '0', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 'TestCategory Five PRO1', '0', 'http://localhost:8080/zshop/upload/image/201703/444e10e1-7026-4d4f-a9f5-331a1c305a67.jpg', null, '\0', '', '', '\0', null, '1.200000', null, '0', '2017-03-22 15:07:33', '0', '2017-03-22 15:07:33', 'TestCategory Five PRO1', '1', '1.000000', '0', '0', '0', null, null, null, '20170322721', null, null, '0', null, '0', '2017-03-22 15:07:33', '0', '2017-03-22 15:07:33', null, null, '81', '101');

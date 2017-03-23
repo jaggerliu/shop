@@ -1,0 +1,25 @@
+ [@product_list count = 3 orderBy="monthSales desc"] [#list products as product]
+<div class="thumbnail">
+    <img src="[#if product.thumbnail??]${product.thumbnail}[#else]${setting.defaultThumbnailProductImage}[/#if]" alt="${abbreviate(product.name, 20)}" />
+    <div class="caption">
+        <h5>Panasonic</h5>
+        <h4 style="text-align:center">
+            <a class="btn" href="${base}${product.path}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">${currency(product.price, true)}</a></h4>
+    </div>
+</div><br/> [/#list] [/@product_list]
+
+<div class="product-thumb clearfix">
+    <div class="image">
+        <a href="product.html"><img src="${base}/resources/static/image/product/iphone_1-200x200.jpg" alt="iPhone5" title="iPhone5" class="img-responsive" /></a>
+    </div>
+    <div class="caption">
+        <h4><a href="product.html">iPhone5</a></h4>
+        <p class="price"> $123.20 </p>
+    </div>
+    <div class="button-group">
+        <div class="add-to-links">
+            <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
+            <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i></button>
+        </div>
+    </div>
+</div>

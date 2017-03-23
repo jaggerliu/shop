@@ -1,0 +1,34 @@
+<!-- Slideshow Start-->
+<div class="slideshow single-slider owl-carousel">
+    [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
+    <div class="item">
+        [#if ad.url??]
+        <a href="#"><img class="img-responsive" src="image/slider/banner-1-750x400.jpg" alt="banner 1" /></a>
+        [#else]
+        <img class="img-responsive" src="image/slider/banner-1-750x400.jpg" alt="banner 1" /> [/#if]
+    </div>
+    [/#if] [/#list]
+
+</div>
+<!-- Slideshow End-->
+
+<div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+        [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
+        <div class="item [#if ad_index == 0]active[/#if]">
+            <div class="container">
+                [#if ad.url??]
+                <a href="${ad.url}"><img style="width:100%" src="${ad.path}" alt="${ad.title}" title="${ad.title}" /></a>
+                [#else]
+                <img style="width:100%" src="${ad.path}" alt="${ad.title}" title="${ad.title}" /> [/#if]
+                <div class="carousel-caption">
+                    <h4>Second Thumbnail label</h4>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+            </div>
+        </div>
+        [/#if] [/#list]
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>

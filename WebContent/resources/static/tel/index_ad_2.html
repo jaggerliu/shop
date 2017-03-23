@@ -1,0 +1,24 @@
+<div class="slideshow single-slider owl-carousel">
+    [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
+    <div class="item">
+        [#if ad.url??]
+        <a href="${ad.url}"><img class="img-responsive" src="${ad.path}" alt="${ad.title}" height="400px" width="750px" /></a>
+        [#else]
+        <img class="img-responsive" src="${ad.path}" alt="${ad.title}" height="400px" width="750px" /> [/#if]
+    </div>
+    [/#if] [/#list]
+</div>
+
+
+<div class="marketshop-banner">
+    <div class="row">
+        [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            [#if ad.url??]
+            <a href="${ad.url}"><img title="sample-banner1" alt="sample-banner1" src="${ad.path}" style="height: 185px;width: 365px"></a>
+            [#else]
+            <img title="sample-banner1" alt="sample-banner1" src="${ad.path}" style="height: 185px;width: 365px"> [/#if]
+        </div>
+        [/#if] [#if ad_index > 2] [#break /] [/#if] [/#list]
+    </div>
+</div>
