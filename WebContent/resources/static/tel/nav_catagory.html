@@ -1,0 +1,20 @@
+[@product_category_root_list] [#list productCategories as category]
+<li>
+    <a href="${category.path}">${category.name}<span>&rsaquo;</span></a>
+    <div class="dropdown-menu">
+        <ul>
+            [@product_category_children_list productCategoryId = category.id] [#list productCategories as productCategory]
+            <li><a href="${productCategory.path}">${productCategory.path} <span>&rsaquo;</span></a>
+                <div class="dropdown-menu">
+                    <ul>
+                        [@product_category_children_list productCategoryId = productCategory.id] [#list productCategories as productCategory_t]
+                        <li><a href="${productCategory_t.path}">${productCategory_t.path}</a></li>
+                        [/#list] [/@product_category_children_list]
+                    </ul>
+                </div>
+            </li>
+            [/#list] [/@product_category_children_list]
+        </ul>
+    </div>
+</li>
+[/#list] [/@product_category_root_list]

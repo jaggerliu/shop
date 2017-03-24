@@ -1,0 +1,23 @@
+<div class="banner owl-carousel">
+    <div class="item">
+        <a href="#"><img src="${base}/resources/static/image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive"
+            /></a>
+    </div>
+    <div class="item">
+        <a href="#"><img src="${base}/resources/static/image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive"
+            /></a>
+    </div>
+</div>
+
+<!-- Slideshow Start-->
+<div class="slideshow single-slider owl-carousel">
+    [#list adPosition.ads as ad] [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
+    <div class="item">
+        [#if ad.url??]
+        <a href="${ad.url}"><img class="img-responsive" src="${ad.path}" alt="${ad.title}" style="width: 750px;height:400px" /></a>
+        [#else]
+        <img class="img-responsive" src="${ad.path}" alt="${ad.title}" style="width: 750px;height:400px" /> [/#if]
+    </div>
+    [/#if] [/#list]
+</div>
+<!-- Slideshow End-->

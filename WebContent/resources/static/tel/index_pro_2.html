@@ -1,0 +1,38 @@
+[@product_category_root_list] [#list productCategories as category]
+<div class="category-module" id="latest_category">
+    <h3 class="subtitle">${category.name} - <a class="viewall" href="${base}${category.path}">view all</a></h3>
+    <div class="category-module-content">
+        <ul id="sub-cat" class="tabs">
+            [@product_category_children_list productCategoryId = category.id count = 5] [#list productCategories as productCategory]
+            <li><a href="#${productCategory.id}">${productCategory.name}</a></li>
+            [/#list] [/@product_category_children_list]
+        </ul>
+        [@product_category_children_list productCategoryId = category.id count = 5] [#list productCategories as productCategory]
+
+        <div id="${productCategory.name}" class="tab_content">
+            <div class="owl-carousel latest_category_tabs">
+                [@product_list productCategoryId = productCategory.id orderBy="monthSales desc"] [#list products as product]
+                <div class="product-thumb">
+                    <div class="image">
+                        <a href="${base}${product.path}"><img src="[#if product.thumbnail??]${product.thumbnail}[#else]${setting.defaultThumbnailProductImage}[/#if]"
+                                alt="${abbreviate(product.name, 20)}" title="${abbreviate(product.name, 20)}" class="img-responsive"
+                            /></a>
+                    </div>
+                    <div class="caption">
+                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
+                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> <span class="price-old">$122.00</span>                            <span class="saving">-50%</span> </p>
+                    </div>
+                    <div class="button-group">
+                        <div class="add-to-links">
+                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
+                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
+                        </div>
+                    </div>
+                </div>
+                [/#list] [/@product_list]
+            </div>
+        </div>
+        [/#list] [/@product_category_children_list]
+    </div>
+</div>
+[/#list] [/@product_category_root_list]

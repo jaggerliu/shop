@@ -105,7 +105,8 @@ public class ProductController extends BaseController {
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("page", productService.findPage(productCategory, brand, promotion, tags, attributeValue, startPrice, endPrice, true, true, null, false, null, null, orderType, pageable));
-		return "/shop/product/list";
+		//return "/shop/product/list";
+		return "/shop/proshow/category";
 	}
 
 	/**
@@ -127,7 +128,8 @@ public class ProductController extends BaseController {
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("page", productService.findPage(null, brand, promotion, tags, null, startPrice, endPrice, true, true, null, false, null, null, orderType, pageable));
-		return "/shop/product/list";
+		//return "/shop/product/list";
+		return "/shop/proshow/category";
 	}
 
 	/**
@@ -176,8 +178,16 @@ public class ProductController extends BaseController {
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("page", productService.findPage(null, brand, promotion, tags, null, startPrice, endPrice, true, true, null, false, null, null, orderType, pageable));
-		return "/shop/index";
+		return "/shop/proshow/index";
 	}
-
+	
+	/**
+	 * 点击数
+	 */
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	public String detail(@PathVariable Long id,ModelMap model) {
+		model.addAttribute("product", productService.find(id));
+		return "/shop/proshow/detail";
+	}
 
 }
