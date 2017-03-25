@@ -311,6 +311,9 @@ public class Product extends BaseEntity {
 
 	/** 品牌 */
 	private Brand brand;
+	
+	/** 品牌 */
+	private ProductUse productUse;
 
 	/** 商品图片 */
 	private List<ProductImage> productImages = new ArrayList<ProductImage>();
@@ -1626,6 +1629,25 @@ public class Product extends BaseEntity {
 	 */
 	public void setBrand(Brand brand) {
 		this.brand = brand;
+	}
+	/**
+	 * 设置用于
+	 * 
+	 * @param productUse
+	 *           用于
+	 */
+	public void setProductUse(ProductUse productUse) {
+		this.productUse = productUse;
+	}
+	
+	/**
+	 * 获取品牌
+	 * 
+	 * @return 用于
+	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+	public ProductUse getProductUse() {
+		return productUse;
 	}
 
 	/**

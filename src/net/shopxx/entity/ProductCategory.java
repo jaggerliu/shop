@@ -79,6 +79,9 @@ public class ProductCategory extends OrderEntity {
 
 	/** 筛选品牌 */
 	private Set<Brand> brands = new HashSet<Brand>();
+	
+	/** 筛选品牌 */
+	private Set<ProductUse> productUses = new HashSet<ProductUse>();
 
 	/** 参数组 */
 	private Set<ParameterGroup> parameterGroups = new HashSet<ParameterGroup>();
@@ -292,6 +295,28 @@ public class ProductCategory extends OrderEntity {
 	 */
 	public void setBrands(Set<Brand> brands) {
 		this.brands = brands;
+	}
+	
+	/**
+	 * 获取筛选品牌
+	 * 
+	 * @return 筛选品牌
+	 */
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "zx_product_category_product_use")
+	@OrderBy("order asc")
+	public Set<ProductUse> getProductUses() {
+		return productUses;
+	}
+
+	/**
+	 * 设置筛选品牌
+	 * 
+	 * @param brands
+	 *            筛选品牌
+	 */
+	public void setProductUses(Set<ProductUse> productUses) {
+		this.productUses = productUses;
 	}
 
 	/**

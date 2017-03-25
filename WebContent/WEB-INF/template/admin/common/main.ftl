@@ -172,6 +172,11 @@ $().ready(function() {
 							<a href="../brand/list.jhtml" target="iframe">${message("admin.main.brand")}</a>
 						</dd>
 					[/@shiro.hasPermission]
+
+						<dd>
+							<a href="../product_use/list.jhtml" target="iframe">${message("admin.main.brand")}</a>
+						</dd>
+				
 					[@shiro.hasPermission name="admin:productNotify"]
 						<dd>
 							<a href="../product_notify/list.jhtml" target="iframe">${message("admin.main.productNotify")}</a>
@@ -365,7 +370,7 @@ $().ready(function() {
 							<a href="../setting/edit.jhtml" target="iframe">${message("admin.main.setting")}</a>
 						</dd>
 					[/@shiro.hasPermission]
-					<!--
+
 					[@shiro.hasPermission name="admin:area"]
 						<dd>
 							<a href="../area/list.jhtml" target="iframe">${message("admin.main.area")}</a>
@@ -422,7 +427,7 @@ $().ready(function() {
 							<a href="../message/draft.jhtml" target="iframe">${message("admin.main.draft")}</a>
 						</dd>
 					[/@shiro.hasPermission]
-					-->
+	
 					[@shiro.hasPermission name="admin:log"]
 						<dd>
 							<a href="../log/list.jhtml" target="iframe">${message("admin.main.log")}</a>

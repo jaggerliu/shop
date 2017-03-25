@@ -93,8 +93,8 @@
 								    [@brand_list] 
 								    [#list brands as brand]
 								    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">
-								        <a href="[#if brand.url??]${brand.url}[#else]${base}/zshop/brand/content/${brand.id}.jhtml[/#if]"><img src="[#if brand.type == "image"]${brand.logo}[#else]${base}/resources/static/image/product/apple_logo-60x60.jpg[/#if]" title="${brand.name}" alt="${brand.name}" /></a>
-								        <a href="[#if brand.url??]${brand.url}[#else]${base}/zshop/brand/content/${brand.id}.jhtml[/#if]">${brand.name}</a>
+								        <a href="[#if brand.url??]${brand.url}[#else]${base}/brand/content/${brand.id}.jhtml[/#if]"><img src="[#if brand.type == "image"]${brand.logo}[#else]${base}/resources/static/image/product/apple_logo-60x60.jpg[/#if]" title="${brand.name}" alt="${brand.name}" /></a>
+								        <a href="[#if brand.url??]${brand.url}[#else]${base}/brand/content/${brand.id}.jhtml[/#if]">${brand.name}</a>
 								    </div>
 								    [/#list] 
 								    [/@brand_list]
