@@ -147,7 +147,7 @@ public class ProductController extends BaseController {
 		model.addAttribute("endPrice", endPrice);
 		model.addAttribute("orderType", orderType);
 		model.addAttribute("page", searchService.search(keyword, startPrice, endPrice, orderType, pageable));
-		return "shop/product/search";
+		return "shop/proshow/search";
 	}
 
 	/**

@@ -394,6 +394,14 @@ $().ready(function() {
 			</tr>
 			<tr>
 				<th>
+					型号:
+				</th>
+				<td>
+					<input type="text" name="model" class="text" maxlength="200" />
+				</td>
+			</tr>			
+			<tr>
+				<th>
 					${message("Product.sn")}:
 				</th>
 				<td>

@@ -133,6 +133,10 @@ public class Product extends BaseEntity {
 
 	/** 编号 */
 	private String sn;
+	
+	/** 编号 */
+	private String model;
+
 
 	/** 名称 */
 	private String name;
@@ -385,6 +389,29 @@ public class Product extends BaseEntity {
 		this.sn = sn;
 	}
 
+	/**
+	 * 获取型号
+	 * 
+	 * @return 型号
+	 */
+	@JsonProperty
+	@Field(store = Store.YES, index = Index.TOKENIZED, analyzer = @Analyzer(impl = IKAnalyzer.class))
+	@NotEmpty
+	@Length(max = 200)
+	@Column(nullable = false)
+	public String getModel() {
+		return model;
+	}
+
+	/**
+	 * 设置名称
+	 * 
+	 * @param model
+	 *            型号
+	 */
+	public void setModel(String model) {
+		this.model = model;
+	}
 	/**
 	 * 获取名称
 	 * 

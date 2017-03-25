@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="${base}/resources/static/${base}/resources/static/image/favicon.png" rel="icon" />
-    <title>Marketshop - eCommerce HTML Template</title>
+    <title>Shop</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
 	[#include "/shop/proshow/include/head.ftl" /]
 </head>
-
 <body>
     <div class="wrapper-wide">
    		[#include "/shop/proshow/include/header.ftl" /]
@@ -20,7 +18,7 @@
 		    <div class="container">
 		        <!-- Breadcrumb Start-->
 		        <ul class="breadcrumb">
-		            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+		            <li><a href="${base}"><i class="fa fa-home"></i></a></li>
 					[#if productCategory??]
 						[@product_category_parent_list productCategoryId = productCategory.id]
 							[#list productCategories as productCategory]
@@ -53,7 +51,8 @@
 						            <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
 						            <p class="price"> <span class="price-new">${currency(product.price, true)}</span>
 						            [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]
-						                <span class="saving">-26%</span>
+							        [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							        [/#if]
 						            </p>
 						        </div>
 						    </div>
@@ -65,7 +64,7 @@
 		            <!--Middle Part Start-->
 		            <div id="content" class="col-sm-9">
 		                <h1 class="title">${productCategory.name}</h1>
-		                <h3 class="subtitle">Refine Search</h3>
+		                <h3 class="subtitle">Use For</h3>
 		                <div class="category-list-thumb row">
 		                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
 		                        <a href="category.html"><img src="${base}/resources/static/image/no_image.jpg" alt="Laptops (6)" /></a> <a href="category.html">Laptops (6)</a> </div>
@@ -127,14 +126,10 @@
 							                <p class="description">${abbreviate(product.name, 60)}</p>
 							                <p class="price">
 							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
-							                    <span class="price-old">${currency(product.marketPrice, true)}</span> [/#if]
-							                    <span class="saving">-26%</span> <span class="price-tax">Ex Tax: $1,400.00</span> </p>
-							            </div>
-							            <div class="button-group">
-							                <div class="add-to-links">
-							                    <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i> <span>Add to Wish List</span></button>
-							                    <button type="button" data-toggle="tooltip" title="Compare this Product" onClick=""><i class="fa fa-exchange"></i> <span>Compare this Product</span></button>
-							                </div>
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+										        [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+										        [/#if]
+							                    [/#if]</p>
 							            </div>
 							        </div>
 							    </div>

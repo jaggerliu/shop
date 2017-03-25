@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="${base}/resources/static/image/favicon.png" rel="icon" />
-    <title>Marketshop - eCommerce HTML Template</title>
+    <title>Shop</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
 	[#include "/shop/proshow/include/head.ftl" /]
 </head>
-
 <body>
     <div class="wrapper-wide">
    		[#include "/shop/proshow/include/header.ftl" /]
@@ -39,13 +37,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]
+							                </p>
 						                    </div>
 						                </div>
 							[/#list] 
@@ -64,14 +62,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
-						                    </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]
+							                   </div>
 						                </div>
 							[/#list] 
 							[/@product_list]
@@ -108,14 +105,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
-						                    </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]											
+											</div>
 						                </div>
 						                [/#list] 
 										[/@product_list]

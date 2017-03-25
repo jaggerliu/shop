@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <!--热卖商品-->
-                        <h3 class="subtitle">Laster</h3>
+                        <h3 class="subtitle">Laster Products</h3>
                         <div class="owl-carousel product_carousel">
 							[@product_list count = 8 orderBy="monthSales desc" tagIds = 2] 
 							[#list products as product]
@@ -39,13 +39,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]
+							                </p>
 						                    </div>
 						                </div>
 							[/#list] 
@@ -64,14 +64,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
-						                    </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]
+							                   </div>
 						                </div>
 							[/#list] 
 							[/@product_list]
@@ -108,14 +107,13 @@
 						                    </div>
 						                    <div class="caption">
 						                        <h4><a href="${base}${product.path}">${abbreviate(product.name, 20)}</a></h4>
-						                        <p class="price"> <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice?? &&product.marketPrice != 0]<span class="price-old">${currency(product.marketPrice, true)}</span>[/#if]</p>
-						                    </div>
-						                    <div class="button-group">
-						                        <div class="add-to-links">
-						                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-						                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-						                        </div>
-						                    </div>
+						                       	<p class="price">
+							                    <span class="price-new">${currency(product.price, true)}</span> [#if product.marketPrice??]
+							                    <span class="price-old">${currency(product.marketPrice, true)}</span> 
+							                     [#if product.marketPrice > product.price]<span class="saving">${((1 - (product.price / product.marketPrice))*100)?int}%</span>
+							                     [/#if]
+							                    [/#if]											
+											</div>
 						                </div>
 						                [/#list] 
 										[/@product_list]

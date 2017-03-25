@@ -14,36 +14,9 @@
                         <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
                             <h5>Information</h5>
                             <ul>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="about-us.html">Delivery Information</a></li>
-                                <li><a href="about-us.html">Privacy Policy</a></li>
-                                <li><a href="about-us.html">Terms &amp; Conditions</a></li>
-                            </ul>
-                        </div>
-                        <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                            <h5>Customer Service</h5>
-                            <ul>
-                                <li><a href="contact-us.html">Contact Us</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="sitemap.html">Site Map</a></li>
-                            </ul>
-                        </div>
-                        <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                            <h5>Extras</h5>
-                            <ul>
-                                <li><a href="#">Brands</a></li>
-                                <li><a href="#">Gift Vouchers</a></li>
-                                <li><a href="#">Affiliates</a></li>
-                                <li><a href="#">Specials</a></li>
-                            </ul>
-                        </div>
-                        <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                            <h5>My Account</h5>
-                            <ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="#">Wish List</a></li>
-                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="${base}/about.jhtml">About Us</a></li>
+								<li><a href="${base}/help.jhtml">Help & FAQ</a></li>
+								<li><a href="${base}/contact.jhtml" target="_blank">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
