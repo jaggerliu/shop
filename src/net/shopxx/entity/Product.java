@@ -399,7 +399,6 @@ public class Product extends BaseEntity {
 	 */
 	@JsonProperty
 	@Field(store = Store.YES, index = Index.TOKENIZED, analyzer = @Analyzer(impl = IKAnalyzer.class))
-	@NotEmpty
 	@Length(max = 200)
 	@Column(nullable = false)
 	public String getModel() {

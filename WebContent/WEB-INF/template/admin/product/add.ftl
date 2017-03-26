@@ -520,6 +520,21 @@ $().ready(function() {
 			</tr>
 			<tr>
 				<th>
+					适用产品:
+				</th>
+				<td>
+					<select name="productUseId">
+						<option value="">${message("admin.common.choose")}</option>
+						[#list productUses as productUse]
+							<option value="${productUse.id}">
+								${productUse.name}
+							</option>
+						[/#list]
+					</select>
+				</td>
+			</tr>			
+			<tr>
+				<th>
 					${message("Product.tags")}:
 				</th>
 				<td>

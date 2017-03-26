@@ -51,9 +51,6 @@ public class ProductUse extends OrderEntity {
 	/** 商品 */
 	private Set<Product> products = new HashSet<Product>();
 
-	/** 商品分类 */
-	private Set<ProductCategory> productCategories = new HashSet<ProductCategory>();
-
 
 	/**
 	 * 获取名称
@@ -158,25 +155,6 @@ public class ProductUse extends OrderEntity {
 		this.products = products;
 	}
 
-	/**
-	 * 获取商品分类
-	 * 
-	 * @return 商品分类
-	 */
-	@ManyToMany(mappedBy = "productUses", fetch = FetchType.LAZY)
-	@OrderBy("order asc")
-	public Set<ProductCategory> getProductCategories() {
-		return productCategories;
-	}
 
-	/**
-	 * 设置商品分类
-	 * 
-	 * @param productCategories
-	 *            商品分类
-	 */
-	public void setProductCategories(Set<ProductCategory> productCategories) {
-		this.productCategories = productCategories;
-	}
 
 }

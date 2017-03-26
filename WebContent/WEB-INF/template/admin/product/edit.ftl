@@ -536,6 +536,21 @@ $().ready(function() {
 			</tr>
 			<tr>
 				<th>
+					适用产品:
+				</th>
+				<td>
+					<select name="productUseId">
+						<option value="">${message("admin.common.choose")}</option>
+						[#list productUses as productUse]
+							<option value="${productUse.id}" [#if productUse == product.productUse] selected="selected"[/#if]>
+								${productUse.name}
+							</option>
+						[/#list]
+					</select>
+				</td>
+			</tr>				
+			<tr>
+				<th>
 					${message("Product.tags")}:
 				</th>
 				<td>

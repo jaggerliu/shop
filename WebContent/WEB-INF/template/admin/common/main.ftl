@@ -174,7 +174,7 @@ $().ready(function() {
 					[/@shiro.hasPermission]
 
 						<dd>
-							<a href="../product_use/list.jhtml" target="iframe">${message("admin.main.brand")}</a>
+							<a href="../product_use/list.jhtml" target="iframe">商品适用</a>
 						</dd>
 				
 					[@shiro.hasPermission name="admin:productNotify"]

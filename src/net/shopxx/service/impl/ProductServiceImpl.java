@@ -28,6 +28,7 @@ import net.shopxx.entity.Member;
 import net.shopxx.entity.Product;
 import net.shopxx.entity.Product.OrderType;
 import net.shopxx.entity.ProductCategory;
+import net.shopxx.entity.ProductUse;
 import net.shopxx.entity.Promotion;
 import net.shopxx.entity.Tag;
 import net.shopxx.service.ProductService;
@@ -90,6 +91,10 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	}
 
 	@Transactional(readOnly = true)
+	public List<Product> findByUse(ProductUse productUse){
+		return productDao.findByUse(productUse);
+	}
+	@Transactional(readOnly = true)
 	public List<Product> search(String keyword, Boolean isGift, Integer count) {
 		return productDao.search(keyword, isGift, count);
 	}
@@ -99,6 +104,11 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 		return productDao.findList(productCategory, brand, promotion, tags, attributeValue, startPrice, endPrice, isMarketable, isList, isTop, isGift, isOutOfStock, isStockAlert, orderType, count, filters, orders);
 	}
 
+	@Transactional(readOnly = true)
+	public List<Product> findList(ProductCategory productCategory,ProductUse productUse, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Integer count, List<Filter> filters, List<Order> orders) {
+		return productDao.findList(productCategory,productUse, brand, promotion, tags, attributeValue, startPrice, endPrice, isMarketable, isList, isTop, isGift, isOutOfStock, isStockAlert, orderType, count, filters, orders);
+	}
+	
 	@Transactional(readOnly = true)
 	@Cacheable("product")
 	public List<Product> findList(ProductCategory productCategory, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Integer count, List<Filter> filters, List<Order> orders,
@@ -120,7 +130,10 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	public Page<Product> findPage(ProductCategory productCategory, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Pageable pageable) {
 		return productDao.findPage(productCategory, brand, promotion, tags, attributeValue, startPrice, endPrice, isMarketable, isList, isTop, isGift, isOutOfStock, isStockAlert, orderType, pageable);
 	}
-
+	@Transactional(readOnly = true)
+	public Page<Product> findPage(ProductCategory productCategory, ProductUse productUse,Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Pageable pageable) {
+		return productDao.findPage(productCategory,productUse, brand, promotion, tags, attributeValue, startPrice, endPrice, isMarketable, isList, isTop, isGift, isOutOfStock, isStockAlert, orderType, pageable);
+	}
 	@Transactional(readOnly = true)
 	public Page<Product> findPage(Member member, Pageable pageable) {
 		return productDao.findPage(member, pageable);

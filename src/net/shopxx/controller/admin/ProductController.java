@@ -43,6 +43,7 @@ import net.shopxx.service.MemberRankService;
 import net.shopxx.service.ProductCategoryService;
 import net.shopxx.service.ProductImageService;
 import net.shopxx.service.ProductService;
+import net.shopxx.service.ProductUseService;
 import net.shopxx.service.PromotionService;
 import net.shopxx.service.SpecificationService;
 import net.shopxx.service.SpecificationValueService;
@@ -90,6 +91,8 @@ public class ProductController extends BaseController {
 	private SpecificationValueService specificationValueService;
 	@Resource(name = "fileServiceImpl")
 	private FileService fileService;
+	@Resource(name = "productUseServiceImpl")
+	private ProductUseService productUseService;
 
 	/**
 	 * 检查编号是否唯一
@@ -134,6 +137,7 @@ public class ProductController extends BaseController {
 	public String add(ModelMap model) {
 		model.addAttribute("productCategoryTree", productCategoryService.findTree());
 		model.addAttribute("brands", brandService.findAll());
+		model.addAttribute("productUses",productUseService.findAll());
 		model.addAttribute("tags", tagService.findList(Type.product));
 		model.addAttribute("memberRanks", memberRankService.findAll());
 		model.addAttribute("specifications", specificationService.findAll());
@@ -144,7 +148,7 @@ public class ProductController extends BaseController {
 	 * 保存
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Product product, Long productCategoryId, Long brandId, Long[] tagIds, Long[] specificationIds, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String save(Product product, Long productCategoryId, Long brandId,Long productUseId, Long[] tagIds, Long[] specificationIds, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		for (Iterator<ProductImage> iterator = product.getProductImages().iterator(); iterator.hasNext();) {
 			ProductImage productImage = iterator.next();
 			if (productImage == null || productImage.isEmpty()) {
@@ -160,6 +164,7 @@ public class ProductController extends BaseController {
 		}
 		product.setProductCategory(productCategoryService.find(productCategoryId));
 		product.setBrand(brandService.find(brandId));
+		product.setProductUse(productUseService.find(productUseId));
 		product.setTags(new HashSet<Tag>(tagService.findList(tagIds)));
 		if (!isValid(product)) {
 			return ERROR_VIEW;
@@ -314,6 +319,7 @@ public class ProductController extends BaseController {
 	public String edit(Long id, ModelMap model) {
 		model.addAttribute("productCategoryTree", productCategoryService.findTree());
 		model.addAttribute("brands", brandService.findAll());
+		model.addAttribute("productUses",productUseService.findAll());
 		model.addAttribute("tags", tagService.findList(Type.product));
 		model.addAttribute("memberRanks", memberRankService.findAll());
 		model.addAttribute("specifications", specificationService.findAll());
@@ -325,7 +331,7 @@ public class ProductController extends BaseController {
 	 * 更新
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(Product product, Long productCategoryId, Long brandId, Long[] tagIds, Long[] specificationIds, Long[] specificationProductIds, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String update(Product product, Long productCategoryId, Long brandId, Long productUseId,Long[] tagIds, Long[] specificationIds, Long[] specificationProductIds, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		for (Iterator<ProductImage> iterator = product.getProductImages().iterator(); iterator.hasNext();) {
 			ProductImage productImage = iterator.next();
 			if (productImage == null || productImage.isEmpty()) {
@@ -341,6 +347,7 @@ public class ProductController extends BaseController {
 		}
 		product.setProductCategory(productCategoryService.find(productCategoryId));
 		product.setBrand(brandService.find(brandId));
+		product.setProductUse(productUseService.find(productUseId));
 		product.setTags(new HashSet<Tag>(tagService.findList(tagIds)));
 		if (!isValid(product)) {
 			return ERROR_VIEW;

@@ -22,6 +22,7 @@ import net.shopxx.entity.Member;
 import net.shopxx.entity.Product;
 import net.shopxx.entity.Product.OrderType;
 import net.shopxx.entity.ProductCategory;
+import net.shopxx.entity.ProductUse;
 import net.shopxx.entity.Promotion;
 import net.shopxx.entity.Tag;
 
@@ -50,7 +51,15 @@ public interface ProductDao extends BaseDao<Product, Long> {
 	 * @return 商品，若不存在则返回null
 	 */
 	Product findBySn(String sn);
-
+	
+	/**
+	 * 根据商品用途查找商品
+	 * 
+	 * @param productUse
+	 *            商品用途
+	 * @return 商品，若不存在则返回null
+	 */
+	List<Product> findByUse(ProductUse productUse);
 	/**
 	 * 通过ID、编号、全称查找商品
 	 * 
@@ -105,6 +114,50 @@ public interface ProductDao extends BaseDao<Product, Long> {
 	 */
 	List<Product> findList(ProductCategory productCategory, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Integer count, List<Filter> filters, List<Order> orders);
 
+	/**
+	 * 查找商品
+	 * 
+	 * @param productCategory
+	 *            商品分类
+	 * @param productUse
+	 *            商品用途
+	 * @param brand
+	 *            品牌
+	 * @param promotion
+	 *            促销
+	 * @param tags
+	 *            标签
+	 * @param attributeValue
+	 *            属性值
+	 * @param startPrice
+	 *            最低价格
+	 * @param endPrice
+	 *            最高价格
+	 * @param isMarketable
+	 *            是否上架
+	 * @param isList
+	 *            是否列出
+	 * @param isTop
+	 *            是否置顶
+	 * @param isGift
+	 *            是否为赠品
+	 * @param isOutOfStock
+	 *            是否缺货
+	 * @param isStockAlert
+	 *            是否库存警告
+	 * @param orderType
+	 *            排序类型
+	 * @param count
+	 *            数量
+	 * @param filters
+	 *            筛选
+	 * @param orders
+	 *            排序
+	 * @return 商品
+	 */
+	List<Product> findList(ProductCategory productCategory,ProductUse productUse, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Integer count, List<Filter> filters, List<Order> orders);
+
+	
 	/**
 	 * 查找已上架商品
 	 * 
@@ -182,6 +235,44 @@ public interface ProductDao extends BaseDao<Product, Long> {
 	 * @return 商品分页
 	 */
 	Page<Product> findPage(ProductCategory productCategory, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Pageable pageable);
+	/**
+	 * 查找商品分页
+	 * 
+	 * @param productCategory
+	 *            商品分类
+	 * @param productuse
+	 *            用途       
+	 * @param brand
+	 *            品牌
+	 * @param promotion
+	 *            促销
+	 * @param tags
+	 *            标签
+	 * @param attributeValue
+	 *            属性值
+	 * @param startPrice
+	 *            最低价格
+	 * @param endPrice
+	 *            最高价格
+	 * @param isMarketable
+	 *            是否上架
+	 * @param isList
+	 *            是否列出
+	 * @param isTop
+	 *            是否置顶
+	 * @param isGift
+	 *            是否为赠品
+	 * @param isOutOfStock
+	 *            是否缺货
+	 * @param isStockAlert
+	 *            是否库存警告
+	 * @param orderType
+	 *            排序类型
+	 * @param pageable
+	 *            分页信息
+	 * @return 商品分页
+	 */
+	Page<Product> findPage(ProductCategory productCategory,ProductUse productUse, Brand brand, Promotion promotion, List<Tag> tags, Map<Attribute, String> attributeValue, BigDecimal startPrice, BigDecimal endPrice, Boolean isMarketable, Boolean isList, Boolean isTop, Boolean isGift, Boolean isOutOfStock, Boolean isStockAlert, OrderType orderType, Pageable pageable);
 
 	/**
 	 * 查找收藏商品分页

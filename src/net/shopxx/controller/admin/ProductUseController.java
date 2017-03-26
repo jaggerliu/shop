@@ -51,7 +51,6 @@ public class ProductUseController extends BaseController {
 			return ERROR_VIEW;
 		}
 		productUse.setProducts(null);
-		productUse.setProductCategories(null);
 		productUseService.save(productUse);
 		addFlashMessage(redirectAttributes, SUCCESS_MESSAGE);
 		return "redirect:list.jhtml";
@@ -86,7 +85,6 @@ public class ProductUseController extends BaseController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Pageable pageable, ModelMap model) {
 		model.addAttribute("page", productUseService.findPage(pageable));
-		System.out.println(111);
 		return "/admin/product_use/list";
 	}
 
