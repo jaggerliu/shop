@@ -1,12 +1,18 @@
 <div class="banner owl-carousel">
+    [#list adPosition.ads as ad] 
+    [#if ad.hasBegun() && !ad.hasEnded() && ad.type == "image"]
     <div class="item">
-        <a href="#"><img src="${base}/resources/static/image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive"
-            /></a>
+        [#if ad.url??]
+        <a href="${ad.url}">
+            <img src="${ad.path}" alt="${ad.title}" class="img-responsive" style="width: 265px;height:350px"/>
+        </a>
+        [#else]
+          <img src="${ad.path}" alt="${ad.title}" class="img-responsive" style="width: 265px;height:350px"/>
+        [/#if]
     </div>
-    <div class="item">
-        <a href="#"><img src="${base}/resources/static/image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive"
-            /></a>
-    </div>
+      [/#if]
+       [#if ad_index > 2] [#break /] [/#if] 
+       [/#list]
 </div>
 
 <!-- Slideshow Start-->

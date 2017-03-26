@@ -3,36 +3,71 @@
     <div class="col-sm-6 text-left">
         <ul class="pagination">
             [#if isFirst]
-            <span class="firstPage">&nbsp;</span> [#else]
-            <a class="firstPage" href="[@pattern?replace(" {pageNumber} ", "${firstPageNumber} ")?interpret /]">&nbsp;</a>            [/#if]
-
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">&gt;</a></li>
-            <li><a href="#">&gt;|</a></li>
+		    [#else]
+            <li><a class="firstPage" href="[@pattern?replace("{pageNumber}", "${firstPageNumber}")?interpret /]">&nbsp;</a></li>
+		    [/#if]
+            [#if hasPrevious]
+                <a class="previousPage" href="[@pattern?replace("{pageNumber}", "${previousPageNumber}")?interpret /]">&nbsp;</a>
+            [/#if]
+            [#list segment as segmentPageNumber]
+                [#if segmentPageNumber_index == 0 && segmentPageNumber > firstPageNumber + 1]
+                    <li><a>...</a></li>
+                [/#if]
+                [#if segmentPageNumber != pageNumber]
+                    <li><a href="#"><a href="[@pattern?replace("{pageNumber}", "${segmentPageNumber}")?interpret /]">${segmentPageNumber}</a></a></li>   
+                [#else]
+                    <li class="active"><span>${segmentPageNumber}</span></li>
+                [/#if]
+                [#if !segmentPageNumber_has_next && segmentPageNumber < lastPageNumber - 1]
+                      <li><a>...</a></li>
+                [/#if]
+            [/#list]
+            [#if hasNext]
+                 <li><a href="[@pattern?replace("{pageNumber}", "${nextPageNumber}")?interpret /]">&gt;</a></li>
+            [/#if]
+            [#if isLast]
+            [#else]	
+                 <li><a href="[@pattern?replace("{pageNumber}", "${lastPageNumber}")?interpret /]">&gt;|</a></li>
+            [/#if]
         </ul>
     </div>
     <div class="col-sm-6 text-right">Showing 1 to 12 of 15 (2 Pages)</div>
 </div>
-[/#if] [#if totalPages > 1]
-<div class="pagination">
-    [#if isFirst]
-    <span class="firstPage">&nbsp;</span> [#else]
-    <a class="firstPage" href="[@pattern?replace(" {pageNumber} ", "${firstPageNumber} ")?interpret /]">&nbsp;</a> [/#if]
-    [#if hasPrevious]
-    <a class="previousPage" href="[@pattern?replace(" {pageNumber} ", "${previousPageNumber} ")?interpret /]">&nbsp;</a>    [#else]
-    <span class="previousPage">&nbsp;</span> [/#if] [#list segment as segmentPageNumber] [#if segmentPageNumber_index ==
-    0 && segmentPageNumber > firstPageNumber + 1]
-    <span class="pageBreak">...</span> [/#if] [#if segmentPageNumber != pageNumber]
-    <a href="[@pattern?replace(" {pageNumber} ", "${segmentPageNumber} ")?interpret /]">${segmentPageNumber}</a> [#else]
-    <span class="currentPage">${segmentPageNumber}</span> [/#if] [#if !segmentPageNumber_has_next && segmentPageNumber
-    <
-        lastPageNumber - 1] <span class="pageBreak">...</span>
-        [/#if] [/#list] [#if hasNext]
-        <a class="nextPage" href="[@pattern?replace(" {pageNumber} ", "${nextPageNumber} ")?interpret /]">&nbsp;</a> [#else]
-        <span class="nextPage">&nbsp;</span> [/#if] [#if isLast]
-        <span class="lastPage">&nbsp;</span> [#else]
-
-        <a class="lastPage" href="[@pattern?replace(" {pageNumber} ", "${lastPageNumber} ")?interpret /]">&nbsp;</a> [/#if]
-</div>
+[/#if]
+[#if totalPages > 1]
+	<div class="pagination">
+		[#if isFirst]
+			<span class="firstPage">&nbsp;</span>
+		[#else]
+			<a class="firstPage" href="[@pattern?replace("{pageNumber}", "${firstPageNumber}")?interpret /]">&nbsp;</a>
+		[/#if]
+		[#if hasPrevious]
+			<a class="previousPage" href="[@pattern?replace("{pageNumber}", "${previousPageNumber}")?interpret /]">&nbsp;</a>
+		[#else]
+			<span class="previousPage">&nbsp;</span>
+		[/#if]
+		[#list segment as segmentPageNumber]
+			[#if segmentPageNumber_index == 0 && segmentPageNumber > firstPageNumber + 1]
+				<span class="pageBreak">...</span>
+			[/#if]
+			[#if segmentPageNumber != pageNumber]
+				<a href="[@pattern?replace("{pageNumber}", "${segmentPageNumber}")?interpret /]">${segmentPageNumber}</a>
+			[#else]
+				<span class="currentPage">${segmentPageNumber}</span>
+			[/#if]
+			[#if !segmentPageNumber_has_next && segmentPageNumber < lastPageNumber - 1]
+				<span class="pageBreak">...</span>
+			[/#if]
+		[/#list]
+		[#if hasNext]
+			<a class="nextPage" href="[@pattern?replace("{pageNumber}", "${nextPageNumber}")?interpret /]">&nbsp;</a>
+		[#else]
+			<span class="nextPage">&nbsp;</span>
+		[/#if]
+		[#if isLast]
+			<span class="lastPage">&nbsp;</span>
+		[#else]	
+			<a class="lastPage" href="[@pattern?replace("{pageNumber}", "${lastPageNumber}")?interpret /]">&nbsp;</a>
+		[/#if]
+	</div>
 [/#if]
