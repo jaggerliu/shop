@@ -370,7 +370,7 @@ $().ready(function() {
 							<a href="../setting/edit.jhtml" target="iframe">${message("admin.main.setting")}</a>
 						</dd>
 					[/@shiro.hasPermission]
-
+					<!--
 					[@shiro.hasPermission name="admin:area"]
 						<dd>
 							<a href="../area/list.jhtml" target="iframe">${message("admin.main.area")}</a>
@@ -401,7 +401,7 @@ $().ready(function() {
 							<a href="../storage_plugin/list.jhtml" target="iframe">${message("admin.main.storagePlugin")}</a>
 						</dd>
 					[/@shiro.hasPermission]
-					
+					-->
 					[@shiro.hasPermission name="admin:admin"]
 						<dd>
 							<a href="../admin/list.jhtml" target="iframe">${message("admin.main.admin")}</a>
@@ -412,6 +412,7 @@ $().ready(function() {
 							<a href="../role/list.jhtml" target="iframe">${message("admin.main.role")}</a>
 						</dd>
 					[/@shiro.hasPermission]
+					<!--
 					[@shiro.hasPermission name="admin:message"]
 						<dd>
 							<a href="../message/send.jhtml" target="iframe">${message("admin.main.send")}</a>
@@ -427,7 +428,7 @@ $().ready(function() {
 							<a href="../message/draft.jhtml" target="iframe">${message("admin.main.draft")}</a>
 						</dd>
 					[/@shiro.hasPermission]
-	
+					-->
 					[@shiro.hasPermission name="admin:log"]
 						<dd>
 							<a href="../log/list.jhtml" target="iframe">${message("admin.main.log")}</a>

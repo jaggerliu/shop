@@ -1,0 +1,17 @@
+ [#if product.specifications?has_content]
+
+<h3 class="subtitle">Available Options</h3>
+<div class="form-group required" style="border: 0">
+    [#assign specificationValues = product.goods.specificationValues /] [#list product.specifications as specification]
+    <label class="control-label">${specification.name}</label>
+
+    <select class="form-control">
+        [#list specification.specificationValues as specificationValue]
+        [#if specificationValues?seq_contains(specificationValue)]
+         <option value="${specificationValue.id}">${specificationValue.name}</option>
+         		[/#if]
+									[/#list]
+    </select> [/#list]
+</div>
+
+[/#if]

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="${base}/resources/static/image/favicon.png" rel="icon" />
     <title>Marketshop - eCommerce HTML Template</title>
-    <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
+    <meta name="description" content="shop">
 	[#include "/shop/proshow/include/head.ftl" /]
 </head>
 

@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>${message("shop.resourceNotFound.title")}[#if systemShowPowered] - Powered By shop[/#if]</title>
-<meta name="author" content="shop Team" />
-<meta name="copyright" content="shop" />
-<link href="${base}/resources/shop/css/common.css" rel="stylesheet" type="text/css" />
-<link href="${base}/resources/shop/css/error.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${base}/resources/shop/js/jquery.js"></script>
-<script type="text/javascript" src="${base}/resources/shop/js/common.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="${base}/resources/static/image/favicon.png" rel="icon" />
+    <title>Shop</title>
+    <meta name="description" content="shop">
+	[#include "/shop/proshow/include/head.ftl" /]
 </head>
 <body>
-	[#include "/shop/include/header.ftl" /]
-	<div class="container error">
-		<div class="span24">
-			<div class="main">
-				<dl>
-					${message("shop.resourceNotFound.message")}
-					<dd>
-						<a href="javascript:;" onclick="window.history.back(); return false;">&gt;&gt; ${message("shop.resourceNotFound.back")}</a>
-					</dd>
-					<dd>
-						<a href="${base}/">&gt;&gt; ${message("shop.resourceNotFound.home")}</a>
-					</dd>
-				</dl>
-			</div>
-		</div>
+    <div class="wrapper-wide">
+   		[#include "/shop/proshow/include/header.ftl" /]
+        <div id="container">
+            <div class="container">
+                <div class="row">
+                    <!--Middle Part Start-->
+                    <div id="content" class="col-sm-12">
+                        <h1 class="title-404 text-center">404</h1>
+                        <p class="text-center lead">Sorry!<br> The page you requested cannot be found! </p>
+                        <div class="buttons text-center"> <a class="btn btn-primary btn-lg" href="${base}/">Continue</a> </div>
+                    </div>
+                    <!--Middle Part End -->
+                </div>
+            </div>
+        </div>						
+	    [#include "/shop/proshow/include/footer.ftl" /] 
 	</div>
-	[#include "/shop/include/footer.ftl" /]
+	[#include "/shop/proshow/include/bottom.ftl" /]
 </body>
 </html>

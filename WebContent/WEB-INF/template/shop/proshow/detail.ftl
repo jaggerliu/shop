@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="${base}/resources/static/image/favicon.png" rel="icon" />
     <title>Marketshop</title>
-    <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
+    <meta name="description" content="shop">
 	[#include "/shop/proshow/include/head.ftl" /]
 </head>
 <body>
@@ -107,17 +107,20 @@
                                         <li></li>
                                     </ul>
                                     <div id="product">
-                                        <!-- <h3 class="subtitle">Available Options</h3>
-                                        <div class="form-group required">
-                                            <label class="control-label">Color</label>
-                                            <select class="form-control" id="input-option200" name="option[200]">
-						                      <option value=""> --- Please Select --- </option>
-						                      <option value="4">Black </option>
-						                      <option value="3">Silver </option>
-						                      <option value="1">Green </option>
-						                      <option value="2">Blue </option>
-						                    </select>
-                                        </div> -->
+										[#if product.specifications?has_content]
+										<h3 class="subtitle">Available Options</h3>
+										<div class="form-group required" style="border: 0">
+										    [#assign specificationValues = product.goods.specificationValues /] [#list product.specifications as specification]
+										    <label class="control-label">${specification.name}</label>
+										    <select class="form-control">
+										        [#list specification.specificationValues as specificationValue]
+										        [#if specificationValues?seq_contains(specificationValue)]
+										         <option value="${specificationValue.id}">${specificationValue.name}</option>
+										         [/#if]
+												[/#list]
+										    </select> [/#list]
+										</div>
+										[/#if]
                                     </div>
                                     <hr>
                                     <!-- AddThis Button BEGIN 
@@ -215,12 +218,6 @@
 											<span class="price-old">${currency(product.marketPrice, true)}</span> <span class="saving">-5%</span> 
 	                                        [/#if]
                                         </p>
-                                    </div>
-                                    <div class="button-group">
-                                        <div class="add-to-links">
-                                            <button type="button" data-toggle="tooltip" title="Add to wishlist" onClick=""><i class="fa fa-heart"></i></button>
-                                            <button type="button" data-toggle="tooltip" title="Add to compare" onClick=""><i class="fa fa-exchange"></i></button>
-                                        </div>
                                     </div>
                                 </div>
 							[/#list]

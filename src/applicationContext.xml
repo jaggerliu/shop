@@ -39,7 +39,7 @@
 		<property name="persistenceUnitName" value="persistenceUnit" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true" />
+				<property name="showSql" value="false" />
 				<property name="generateDdl" value="true" />
 			</bean>
 		</property>
@@ -133,6 +133,7 @@
 				<entry key="tag_list" value-ref="tagListDirective" />
 				<entry key="friend_link_list" value-ref="friendLinkListDirective" />
 				<entry key="brand_list" value-ref="brandListDirective" />
+				<entry key="productUse_list" value-ref="productUseListDirective" />
 				<entry key="article_list" value-ref="articleListDirective" />
 				<entry key="article_category_root_list" value-ref="articleCategoryRootListDirective" />
 				<entry key="article_category_parent_list" value-ref="articleCategoryParentListDirective" />

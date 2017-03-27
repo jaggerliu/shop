@@ -33,20 +33,7 @@
 				${systemVersion}
 			</td>
 		</tr>
-		<tr>
-			<th>
-				${message("admin.index.official")}:
-			</th>
-			<td>
-				<a href="#" target="_blank">###</a>
-			</td>
-			<th>
-				${message("admin.index.bbs")}:
-			</th>
-			<td>
-				<a href="#" target="_blank">###</a>
-			</td>
-		</tr>
+
 		<tr>
 			<td colspan="4">
 				&nbsp;
@@ -127,6 +114,7 @@
 				${outOfStockProductCount}
 			</td>
 		</tr>
+		<!--
 		<tr>
 			<th>
 				${message("admin.index.waitingPaymentOrderCount")}:
@@ -154,7 +142,7 @@
 			<td>
 				${unreadMessageCount}
 			</td>
-		</tr>
+		</tr>-->
 		<tr>
 			<td class="powered" colspan="4">
 				COPYRIGHT © 2005-2013 ALL RIGHTS RESERVED.

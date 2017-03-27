@@ -77,21 +77,21 @@ public class ProductUseController extends BaseController {
 	/**
 	 * 列表
 	 */
-	@RequestMapping(value = "/list/{pageNumber}", method = RequestMethod.GET)
-	public String list(@PathVariable Integer pageNumber, ModelMap model) {
-		Pageable pageable = new Pageable(pageNumber, PAGE_SIZE);
-		model.addAttribute("page", productUseService.findPage(pageable));
-		return "/shop/proshow/list";
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(ModelMap model) {
+		model.addAttribute("useforlist", productUseService.findAll());
+		return "/shop/proshow/useforlist";
 	}
 
 	/**
 	 * 列表
 	 */
 	@RequestMapping(value = "/content/{productUseId}", method = RequestMethod.GET)
-	public String list(@PathVariable Long productUseId, Long brandId, Long promotionId, Long[] tagIds,
+	public String list(@PathVariable Long productUseId,Long productCategoryId, Long brandId, Long promotionId, Long[] tagIds,
 			BigDecimal startPrice, BigDecimal endPrice, OrderType orderType, Integer pageNumber, Integer pageSize,
 			HttpServletRequest request, ModelMap model) {
 		ProductUse productUse = productUseService.find(productUseId);
+		ProductCategory productCategory = productCategoryService.find(productCategoryId);
 		if (productUse == null) {
 			throw new ResourceNotFoundException();
 		}
@@ -115,11 +115,12 @@ public class ProductUseController extends BaseController {
 		model.addAttribute("tags", tags);
 		model.addAttribute("startPrice", startPrice);
 		model.addAttribute("productUse", productUse);
+		model.addAttribute("productCategoryId", productCategoryId);
 		model.addAttribute("endPrice", endPrice);
 		model.addAttribute("orderType", orderType);
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("pageSize", pageSize);
-		model.addAttribute("page", productService.findPage(null, productUse, brand, promotion, tags, null, startPrice,
+		model.addAttribute("page", productService.findPage(productCategory, productUse, brand, promotion, tags, null, startPrice,
 				endPrice, true, true, null, false, null, null, orderType, pageable));
 		// return "/shop/product/list";
 		return "/shop/proshow/usefor";

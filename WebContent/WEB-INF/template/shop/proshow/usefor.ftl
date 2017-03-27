@@ -5,19 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="${base}/resources/static/${base}/resources/static/image/favicon.png" rel="icon" />
+    <link href="${base}/resources/static/image/favicon.png" rel="icon" />
     <title>Shop</title>
-    <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop"> [#include "/shop/proshow/include/head.ftl" /]
+    <meta name="description" content="shop"> [#include "/shop/proshow/include/head.ftl" /]
 </head>
 
 <body>
     <div class="wrapper-wide">
         [#include "/shop/proshow/include/header.ftl" /]
         <div id="container">
+        <form id="productForm" action="${base}/productUse/content/${productUse.id}.jhtml" method="get">
+			<input type="hidden" id="pageNumber" name="pageNumber" value="${page.pageNumber}" />
             <div class="container">
                 <!-- Breadcrumb Start-->
                 <ul class="breadcrumb">
-                    <li><a href="${base}"><i class="fa fa-home"></i></a></li>
+                    <li><a href="${base}/"><i class="fa fa-home"></i></a></li>
                     <li><a>${productUse.name}</a></li>
                 </ul>
                 <!-- Breadcrumb End-->
@@ -53,7 +55,7 @@
                         <h1 class="title">${productUse.name}</h1>
                         <div class="category-list-thumb row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                                <a href="category.html"><img src="${base}/resources/static/image/no_image.jpg" alt="Laptops (6)" /></a>
+                                <a><img src="[#if productUse.logo??]${productUse.logo}[#else]${base}/resources/static/image/no_image.jpg[/#if]" alt="${productUse.name}" /></a>
                             </div>
                             <div class="col-sm-10">
                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque
@@ -70,16 +72,27 @@
                         </div>
                         <div class="product-filter">
                             <div class="row">
-                                <div class="col-md-4 col-sm-5">
+                                <div class="col-md-2 col-sm-5">
                                     <div class="btn-group">
                                         <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i></button>
                                         <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
                                     </div>
-                                    <a href="compare.html" id="compare-total">Product Compare (0)</a> </div>
-                                <div class="col-sm-2 text-right">
-                                    <label class="control-label" for="input-sort">Sort By:</label>
-                                </div>
+                                    </div>
+                                <div class="col-sm-1 text-right">
+                                    <label class="control-label" for="input-sort">Category:</label>
+                                </div>    
                                 <div class="col-md-3 col-sm-2 text-right">
+                                    <select id="input-categoryId" class="form-control col-sm-3" name="productCategoryId" value="${productCategoryId}">
+						                  <option value="">Default</option>
+						                  [#list category as catagory]
+						                   <option value="${catagory.id}" [#if catagory.id == productCategoryId ]selected="selected"[/#if]>${catagory.name}</option>
+						                  [/#list]
+		                			</select>
+                                </div>    
+                                <div class="col-sm-1 text-right">
+                                    <label class="control-label" for="input-sort">SortBy:</label>
+                                </div>                                                            
+                                <div class="col-md-2 col-sm-2 text-right">
                                     <select id="input-sort" class="form-control col-sm-3" name="orderType" value="${orderType}">
 						                  <option value="">Default</option>
 						                  <option value="priceAsc" [#if orderType == "priceAsc"]selected="selected"[/#if]>Price (Low &gt; High)</option>
@@ -136,6 +149,7 @@
 
                 </div>
             </div>
+             </form>
         </div>
         [#include "/shop/proshow/include/footer.ftl" /]
     </div>
@@ -147,6 +161,7 @@
         var $pageNumber = $("#pageNumber");
         var $inputsort = $("#input-sort");
         var $inputlimit = $("#input-limit");
+        var $inputcategory = $("#input-categoryId");
         $productForm.submit(function () {
         });
         $inputsort.change(function () {
@@ -156,7 +171,12 @@
         $inputlimit.change(function () {
             $productForm.submit();
             return false;
-        })
+        });
+        $inputcategory.change(function () {
+            $productForm.submit();
+            return false;
+        });
+        
         $.pageSkip = function (pageNumber) {
             $pageNumber.val(pageNumber);
             $productForm.submit();
