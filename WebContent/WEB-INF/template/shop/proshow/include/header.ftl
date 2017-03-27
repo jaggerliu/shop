@@ -23,7 +23,7 @@
                         <!-- Logo Start -->
                         <div class="col-table-cell col-lg-4 col-md-4 col-sm-12 col-xs-12 inner">
                             <div id="logo">
-                                <a href="${base}"><img class="img-responsive" src="${base}/resources/static/image/logo.png" title="MarketShop" alt="MarketShop" /></a>
+                                <a href="${base}/"><img class="img-responsive" src="${base}/resources/static/image/logo.png" title="MarketShop" alt="MarketShop" /></a>
                             </div>
                         </div>
                         <!-- Logo End -->
