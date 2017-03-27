@@ -16,7 +16,7 @@
             <div class="container">
                 <!-- Breadcrumb Start-->
                 <ul class="breadcrumb">
-                    <li><a href="${base}"><i class="fa fa-home"></i></a></li>
+                    <li><a href="${base}/"><i class="fa fa-home"></i></a></li>
                     <li><a href="#">FAQ</a></li>
                 </ul>
                 <!-- Breadcrumb End-->
