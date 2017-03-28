@@ -64,9 +64,9 @@
                                 <div class="col-sm-6">
                                     <div class="image">
                                     [#if product.productImages?has_content]
-                                    	<img style="height:350px;width:350px;" class="img-responsive" itemprop="image" id="zoom_01" src="${product.productImages[0].medium}" title="${product.name}" alt="${product.name}" data-zoom-image="${product.productImages[0].large}"/> 
+                                    	<img class="img-responsive" itemprop="image" id="zoom_01" src="${product.productImages[0].medium}" title="${product.name}" alt="${product.name}" data-zoom-image="${product.productImages[0].large}"/> 
                                     [#else]
-                                    	<img style="height:350px;width:350px;" class="img-responsive" src="${setting.defaultMediumProductImage}" />
+                                    	<img class="img-responsive" src="${setting.defaultMediumProductImage}" />
                                     [/#if]
                                     </div>
                                     <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> Click image for Gallery</span></div>
