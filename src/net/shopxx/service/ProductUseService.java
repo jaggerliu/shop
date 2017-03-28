@@ -12,7 +12,7 @@ import net.shopxx.Order;
 import net.shopxx.entity.ProductUse;
 
 /**
- * Service - 品牌
+ * Service - 用途
  * 
  * @author lj Team
  * @version 3.0

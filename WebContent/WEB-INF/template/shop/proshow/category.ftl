@@ -163,7 +163,7 @@
     </div>
     [#include "/shop/proshow/include/bottom.ftl" /]
 </body>
-<script type="text/javascript">
+<script>
 $().ready(function() {
 	var $productForm = $("#productForm");
 	var $pageNumber = $("#pageNumber");

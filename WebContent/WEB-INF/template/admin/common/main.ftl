@@ -176,12 +176,15 @@ $().ready(function() {
 						<dd>
 							<a href="../product_use/list.jhtml" target="iframe">商品适用</a>
 						</dd>
-				
-					[@shiro.hasPermission name="admin:productNotify"]
+						<dd>
+							<a href="../contact/list.jhtml" target="iframe">联系我们</a>
+						</dd>
+								
+					<!--[@shiro.hasPermission name="admin:productNotify"]
 						<dd>
 							<a href="../product_notify/list.jhtml" target="iframe">${message("admin.main.productNotify")}</a>
 						</dd>
-					[/@shiro.hasPermission]
+					[/@shiro.hasPermission]-->
 				</dl>
 				<dl id="order">
 					<dt>${message("admin.main.orderGroup")}</dt>

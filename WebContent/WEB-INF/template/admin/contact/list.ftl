@@ -19,13 +19,10 @@ $().ready(function() {
 </head>
 <body>
 	<div class="path">
-		<a href="${base}/admin/common/index.jhtml">${message("admin.path.index")}</a> &raquo; ${message("admin.brand.list")} <span>(${message("admin.page.total", page.total)})</span>
+		<a href="${base}/admin/common/index.jhtml">${message("admin.path.index")}</a> &raquo; 联系我们 <span>(${message("admin.page.total", page.total)})</span>
 	</div>
 	<form id="listForm" action="list.jhtml" method="get">
 		<div class="bar">
-			<a href="add.jhtml" class="iconButton">
-				<span class="addIcon">&nbsp;</span>${message("admin.common.add")}
-			</a>
 			<div class="buttonWrap">
 				<a href="javascript:;" id="deleteButton" class="iconButton disabled">
 					<span class="deleteIcon">&nbsp;</span>${message("admin.common.delete")}
@@ -64,11 +61,14 @@ $().ready(function() {
 				<div class="popupMenu">
 					<ul id="searchPropertyOption">
 						<li>
-							<a href="javascript:;"[#if page.searchProperty == "name"] class="current"[/#if] val="name">${message("Brand.name")}</a>
+							<a href="javascript:;"[#if page.searchProperty == "firstname"] class="current"[/#if] val="firstname">firstname</a>
 						</li>
 						<li>
-							<a href="javascript:;"[#if page.searchProperty == "url"] class="current"[/#if] val="url">${message("Brand.url")}</a>
+							<a href="javascript:;"[#if page.searchProperty == "lastname"] class="current"[/#if] val="lastname">lastname</a>
 						</li>
+						<li>
+							<a href="javascript:;"[#if page.searchProperty == "lastname"] class="current"[/#if] val="email">email</a>
+						</li>						
 					</ul>
 				</div>
 			</div>
@@ -79,47 +79,46 @@ $().ready(function() {
 					<input type="checkbox" id="selectAll" />
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="name">${message("Brand.name")}</a>
+					<a href="javascript:;" class="sort" name="firstname">FirstName</a>
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="logo">${message("Brand.logo")}</a>
+					<a href="javascript:;" class="sort" name="lastname">LastName</a>
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="url">${message("Brand.url")}</a>
+					<a href="javascript:;" class="sort" name="email">邮箱</a>
 				</th>
 				<th>
-					<a href="javascript:;" class="sort" name="order">${message("admin.common.order")}</a>
+					<a href="javascript:;" class="sort" name="createDate">时间</a>
 				</th>
+				<th>
+					<a href="javascript:;" class="sort" name="isLook">是否回复</a>
+				</th>				
 				<th>
 					<span>${message("admin.common.handle")}</span>
 				</th>
 			</tr>
-			[#list page.content as productUse]
+			[#list page.content as contact]
 				<tr>
 					<td>
-						<input type="checkbox" name="ids" value="${productUse.id}" />
+						<input type="checkbox" name="ids" value="${contact.id}" />
 					</td>
 					<td>
-						${productUse.name}
+						${contact.firstname}
 					</td>
 					<td>
-
-							<a href="${productUse.logo}" target="_blank">${message("admin.common.view")}</a>
-
+						${contact.lastname}
 					</td>
 					<td>
-						[#if productUse.url??]
-							<a href="${productUse.url}" target="_blank">${productUse.url}</a>
-						[#else]
-							-
-						[/#if]
+						${contact.email}
 					</td>
 					<td>
-						${productUse.order}
+						${contact.createDate}
 					</td>
 					<td>
-						<a href="edit.jhtml?id=${productUse.id}">[${message("admin.common.edit")}]</a>
-						<a href="${base}/productUse/content/${productUse.id}.jhtml" target="_blank">[${message("admin.common.view")}]</a>
+						[#if contact.isLook?? && contact.isLook]是[#else]否[/#if]
+					</td>					
+					<td>
+						<a href="edit.jhtml?id=${contact.id}">[${message("admin.common.edit")}]</a>
 					</td>
 				</tr>
 			[/#list]
