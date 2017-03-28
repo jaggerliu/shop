@@ -88,7 +88,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu_brands dropdown"><a href="#">UseFor</a>
+                            <!--<li class="menu_brands dropdown"><a href="#">UseFor</a>
 								<div class="dropdown-menu">
 								    [@productUse_list] 
 								    [#list productUses as productUse]
@@ -99,19 +99,22 @@
 								    [/#list] 
 								    [/@productUse_list]
 								</div>
-                            </li>                            
-                            <!--<li class="menu_brands dropdown"><a href="#">Brands</a>
+                            </li>-->                      
+                            <li class="menu_brands dropdown"><a href="#">Brands</a>
 								<div class="dropdown-menu">
 								    [@brand_list] 
 								    [#list brands as brand]
 								    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6">
-								        <a href="[#if brand.url??]${brand.url}[#else]${base}/brand/content/${brand.id}.jhtml[/#if]"><img src="[#if brand.type == "image"]${brand.logo}[#else]${base}/resources/static/image/product/apple_logo-60x60.jpg[/#if]" title="${brand.name}" alt="${brand.name}" /></a>
+								        <a href="[#if brand.url??]${brand.url}[#else]${base}/brand/content/${brand.id}.jhtml[/#if]"><img  style="width:60px;height:60px;" src="[#if brand.type == "image"]${brand.logo}[#else]${base}/resources/static/image/product/apple_logo-60x60.jpg[/#if]" title="${brand.name}" alt="${brand.name}" /></a>
 								        <a href="[#if brand.url??]${brand.url}[#else]${base}/brand/content/${brand.id}.jhtml[/#if]">${brand.name}</a>
 								    </div>
+								    [#if brand_index == 10]
+								   	[#break]
+								    [/#if]
 								    [/#list] 
 								    [/@brand_list]
 								</div>
-                            </li>-->
+                            </li>
                             <li class="contact-link"><a href="${base}/about.jhtml">About Us</a></li>
                             <li class="contact-link"><a href="${base}/help.jhtml">Help & FAQ</a></li>
                             <li class="custom-link-right"><a href="${base}/contact.jhtml" target="_blank">Contact Us</a></li>

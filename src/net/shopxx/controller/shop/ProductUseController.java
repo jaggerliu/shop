@@ -79,7 +79,7 @@ public class ProductUseController extends BaseController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(ModelMap model) {
-		model.addAttribute("useforlist", productUseService.findAll());
+		model.addAttribute("brandlist", productUseService.findAll());
 		return "/shop/proshow/useforlist";
 	}
 

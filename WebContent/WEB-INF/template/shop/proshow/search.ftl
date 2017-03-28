@@ -93,7 +93,7 @@
 							        </div>
 							    </div>
 							</div>
-							[/#list] [#else] ${message("shop.product.noListResult")} [/#if]
+							[/#list] [#else]  <p class="text-center lead">Sorry!<br> no product! </p>[/#if]
                     </div>
                     <!--Middle Part End -->
                     <div class="row">

@@ -64,16 +64,19 @@
 		            <!--Middle Part Start-->
 		            <div id="content" class="col-sm-9">
 		                <h1 class="title">${productCategory.name}</h1>
-		                <h3 class="subtitle">Use For<a class="usermore" href="${base}/productUse/list.jhtml">more</a></h3>
+		                <h3 class="subtitle">Brand<a class="usermore" href="${base}/brand/list.jhtml">more</a></h3>
 		                <div class="category-list-thumb row">
-		                [@productUse_list] 
-						[#list productUses as productUse]
+		                [@brand_list] 
+						[#list brands as brand]
 		                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-		                        <a href="${base}/productUse/content/${productUse.id}.jhtml"><img style="width:100px;height:100px;" src="[#if productUse.logo??]${productUse.logo}[#else]${base}/resources/static/image/no_image.jpg[/#if]" alt="${productUse.name}" /></a> 
-		                        <a href="${base}/productUse/content/${productUse.id}.jhtml">${productUse.name}</a>
+		                        <a href="${base}/brand/content/${brand.id}.jhtml"><img style="width:100px;height:100px;" src="[#if brand.logo??]${brand.logo}[#else]${base}/resources/static/image/no_image.jpg[/#if]" alt="${brand.name}" /></a> 
+		                        <a href="${base}/brand/content/${brand.id}.jhtml">${brand.name}</a>
 		                      </div>
+		  					[#if brand_index == 5]
+							[#break]
+							[/#if]               
 						[/#list] 
-						[/@productUse_list]
+						[/@brand_list]
 						</div>
 		                <div class="product-filter">
 		                    <div class="row">
@@ -143,7 +146,7 @@
 							        </div>
 							    </div>
 							</div>
-							[/#list] [#else] ${message("shop.product.noListResult")} [/#if]
+							[/#list] [#else] <p class="text-center lead">Sorry!<br> no product! </p> [/#if]
 		                </div>
 		                <div class="row">
 							[@pagination pageNumber = page.pageNumber totalPages = page.totalPages pattern = "javascript: $.pageSkip({pageNumber});"]
