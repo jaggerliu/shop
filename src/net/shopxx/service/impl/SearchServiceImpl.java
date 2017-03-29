@@ -225,6 +225,14 @@ public class SearchServiceImpl implements SearchService {
 				sortFields = new SortField[] { new SortField("price", SortField.DOUBLE, true), new SortField("createDate", SortField.LONG, true) };
 			} else if (orderType == OrderType.salesDesc) {
 				sortFields = new SortField[] { new SortField("sales", SortField.INT, true), new SortField("createDate", SortField.LONG, true) };
+			} else if (orderType == OrderType.nameDesc) {
+				sortFields = new SortField[] { new SortField("name", SortField.INT, true), new SortField("createDate", SortField.LONG, true) };
+			} else if (orderType == OrderType.nameAsc) {
+				sortFields = new SortField[] { new SortField("name", SortField.INT, false), new SortField("createDate", SortField.LONG, true) };
+			} else if (orderType == OrderType.modelDesc) {
+				sortFields = new SortField[] { new SortField("model", SortField.INT, true), new SortField("createDate", SortField.LONG, true) };
+			} else if (orderType == OrderType.modelAsc) {
+				sortFields = new SortField[] { new SortField("model", SortField.INT, false), new SortField("createDate", SortField.LONG, true) };
 			} else if (orderType == OrderType.scoreDesc) {
 				sortFields = new SortField[] { new SortField("score", SortField.INT, true), new SortField("createDate", SortField.LONG, true) };
 			} else if (orderType == OrderType.dateDesc) {

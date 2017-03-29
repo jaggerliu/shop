@@ -503,6 +503,18 @@ public class ProductDaoImpl extends BaseDaoImpl<Product, Long> implements Produc
 		} else if (orderType == OrderType.scoreDesc) {
 			orders.add(Order.desc("score"));
 			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.nameAsc) {
+			orders.add(Order.asc("name"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.nameDesc) {
+			orders.add(Order.desc("name"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.modelAsc) {
+			orders.add(Order.asc("model"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.modelDesc) {
+			orders.add(Order.desc("model"));
+			orders.add(Order.desc("createDate"));
 		} else if (orderType == OrderType.dateDesc) {
 			orders.add(Order.desc("createDate"));
 		} else {
@@ -611,6 +623,18 @@ public class ProductDaoImpl extends BaseDaoImpl<Product, Long> implements Produc
 			orders.add(Order.desc("createDate"));
 		} else if (orderType == OrderType.scoreDesc) {
 			orders.add(Order.desc("score"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.nameAsc) {
+			orders.add(Order.asc("name"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.nameDesc) {
+			orders.add(Order.desc("name"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.modelAsc) {
+			orders.add(Order.asc("model"));
+			orders.add(Order.desc("createDate"));
+		} else if (orderType == OrderType.modelDesc) {
+			orders.add(Order.desc("model"));
 			orders.add(Order.desc("createDate"));
 		} else if (orderType == OrderType.dateDesc) {
 			orders.add(Order.desc("createDate"));

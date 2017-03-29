@@ -49,8 +49,12 @@
                                 <div class="col-md-3 col-sm-2 text-right">
 		                            <select id="input-sort" class="form-control col-sm-3" name="orderType" value="${orderType}">
 						                  <option value="">Default</option>
+						                  <option value="nameAsc" [#if orderType == "nameAsc"]selected="selected"[/#if]>Name (A - Z)</option>
+						                  <option value="nameDesc" [#if orderType == "nameDesc"]selected="selected"[/#if]>Name (Z - A)</option>				                  
 						                  <option value="priceAsc" [#if orderType == "priceAsc"]selected="selected"[/#if]>Price (Low &gt; High)</option>
-						                  <option value="priceDesc" [#if orderType == "priceDesc"]selected="selected"[/#if]>Price (High &gt; Low)</option>
+						                  <option value="priceDesc" [#if orderType == "priceDesc"]selected="selected"[/#if]>Price (High &gt; Low)</option>	  
+						                  <option value="modelAsc" [#if orderType == "modelAsc"]selected="selected"[/#if]>Model (A - Z)</option>
+						                  <option value="modelDesc" [#if orderType == "modelDesc"]selected="selected"[/#if]>Model (Z - A)</option>	
 		                			</select>
                                 </div>
                                 <div class="col-sm-1 text-right">

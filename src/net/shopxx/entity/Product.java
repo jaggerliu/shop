@@ -128,7 +128,19 @@ public class Product extends BaseEntity {
 		scoreDesc,
 
 		/** 日期降序 */
-		dateDesc
+		dateDesc,
+		
+		/** 名称升序 */
+		nameAsc,
+
+		/** 名称降序 */
+		nameDesc,
+		
+		/** 型号升序*/
+		modelAsc,
+		
+		/** 型号降序*/
+		modelDesc
 	}
 
 	/** 编号 */
