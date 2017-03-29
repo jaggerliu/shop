@@ -53,7 +53,7 @@ public class ContactController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public @ResponseBody
 	Message save(String content,String firstname,String lastname,String company, String phone ,String email, HttpServletRequest request) {
 		if (!isValid(Contact.class, "content", content) 
@@ -73,6 +73,6 @@ public class ContactController extends BaseController {
 		contact.setIsLook(false);
 		contact.setIp(request.getRemoteAddr());
 		contactService.save(contact);
-		return Message.success("success");
+		return Message.success("Submit success,We will contact you as soon as possible");
 	}
 }

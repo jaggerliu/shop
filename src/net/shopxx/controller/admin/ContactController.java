@@ -8,6 +8,7 @@ package net.shopxx.controller.admin;
 import javax.annotation.Resource;
 
 import net.shopxx.Message;
+import net.shopxx.Page;
 import net.shopxx.Pageable;
 import net.shopxx.entity.Contact;
 import net.shopxx.service.ContactService;
@@ -58,8 +59,10 @@ public class ContactController extends BaseController {
 	 * 列表
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Pageable pageable, ModelMap model) {
-		model.addAttribute("page", contactService.findPage(pageable));
+	public String list(Boolean isLook,Pageable pageable, ModelMap model) {
+		Page page = contactService.findPage(isLook, pageable);
+		model.addAttribute("page", contactService.findPage(isLook, pageable));
+		
 		return "/admin/contact/list";
 	}
 

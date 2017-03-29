@@ -7,8 +7,13 @@ package net.shopxx.service.impl;
 
 import javax.annotation.Resource;
 
+import net.shopxx.Page;
+import net.shopxx.Pageable;
 import net.shopxx.dao.ContactDao;
+import net.shopxx.dao.ProductDao;
 import net.shopxx.entity.Contact;
+import net.shopxx.entity.Member;
+import net.shopxx.entity.Product;
 import net.shopxx.service.ContactService;
 
 import org.springframework.cache.annotation.CacheEvict;
@@ -23,10 +28,17 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("contactServiceImpl")
 public class ContactServiceImpl extends BaseServiceImpl<Contact, Long> implements ContactService {
-
+	
+	@Resource(name = "contactDaoImpl")
+	private ContactDao contactDao;
 	@Resource(name = "contactDaoImpl")
 	public void setBaseDao(ContactDao contactDao) {
 		super.setBaseDao(contactDao);
+	}
+
+	@Transactional(readOnly = true)
+	public Page<Contact> findPage(Boolean isLook, Pageable pageable) {
+		return contactDao.findPage(isLook, pageable);
 	}
 
 	@Override

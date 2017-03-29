@@ -11,9 +11,34 @@
 <script type="text/javascript" src="${base}/resources/admin/js/list.js"></script>
 <script type="text/javascript">
 $().ready(function() {
-
+	var $listForm = $("#listForm");
+	var $moreButton = $("#moreButton");
+	var $filterSelect = $("#filterSelect");
+	var $filterOption = $("#filterOption a");
 	[@flash_message /]
-
+	// 商品筛选
+	$filterSelect.mouseover(function() {
+		var $this = $(this);
+		var offset = $this.offset();
+		var $menuWrap = $this.closest("div.menuWrap");
+		var $popupMenu = $menuWrap.children("div.popupMenu");
+		$popupMenu.css({left: offset.left, top: offset.top + $this.height() + 2}).show();
+		$menuWrap.mouseleave(function() {
+			$popupMenu.hide();
+		});
+	});
+	// 筛选选项
+	$filterOption.click(function() {
+		var $this = $(this);
+		var $dest = $("#" + $this.attr("name"));
+		if ($this.hasClass("checked")) {
+			$dest.val("");
+		} else {
+			$dest.val($this.attr("val"));
+		}
+		$listForm.submit();
+		return false;
+	});	
 });
 </script>
 </head>
@@ -22,11 +47,27 @@ $().ready(function() {
 		<a href="${base}/admin/common/index.jhtml">${message("admin.path.index")}</a> &raquo; 联系我们 <span>(${message("admin.page.total", page.total)})</span>
 	</div>
 	<form id="listForm" action="list.jhtml" method="get">
+		<input type="hidden" id="isLook" name="isLook" value="[#if isLook??]${isLook?string("true", "false")}[/#if]" />
 		<div class="bar">
 			<div class="buttonWrap">
 				<a href="javascript:;" id="deleteButton" class="iconButton disabled">
 					<span class="deleteIcon">&nbsp;</span>${message("admin.common.delete")}
 				</a>
+				<div class="menuWrap">
+					<a href="javascript:;" id="filterSelect" class="button">
+						筛选<span class="arrow">&nbsp;</span>
+					</a>
+					<div class="popupMenu">
+						<ul id="filterOption" class="check">
+							<li>
+								<a href="javascript:;" name="isLook" val="true"[#if isLook?? && isLook] class="checked"[/#if]>已回复</a>
+							</li>
+							<li>
+								<a href="javascript:;" name="isLook" val="false"[#if isLook?? && !isLook] class="checked"[/#if]>未回复</a>
+							</li>
+						</ul>
+					</div>
+				</div>				
 				<a href="javascript:;" id="refreshButton" class="iconButton">
 					<span class="refreshIcon">&nbsp;</span>${message("admin.common.refresh")}
 				</a>

@@ -83,13 +83,14 @@
                                 </div>
                                 <div class="form-group" id="msabox" style="display:none">
                                 	<label class="col-md-2 col-sm-3 control-label">&nbsp;</label>
-	                                <div class="col-md-10 col-sm-9 alert alert-danger">
+	                                <div class="col-md-10 col-sm-9 alert alert-danger" id="alert">
 	                                	<i class="fa fa-exclamation-circle"></i> <span id="msg">Danger - Lorem ipsum dolor sit amet, con sectetuer adipiscing elit.</span>
-	                                </div>                               
+	                                </div>                                  
                                 </div>
                             </fieldset>
                             <div class="buttons">
                                 <div class="pull-right">
+                                 	<input class="btn btn-primary" type="bottom" value="Reset" id="reset"/>
                                     <input class="btn btn-primary" type="bottom" value="Submit" id="submit"/>
                                 </div>
                             </div>
@@ -125,40 +126,80 @@
 <script>
 $().ready(function() {
 	var $submit = $("#submit");
-	var $inputemail = $("#input-email");
-	var $inputfirstname = $("#input-firstname");
-	var $inputlastname = $("#input-lastname");
-	var $inputcontent = $("#input-content");
-	var $phone = $("#input-phone").val();			
+	var $email = $("#input-email");
+	var $firstname = $("#input-firstname");
+	var $lastname = $("#input-lastname");
+	var $content = $("#input-Content");
+	var $phone = $("#input-phone");		
+	var $company = $("#input-company");
+	var $msabox = $("#msabox");
+	var $alert = $("#alert"); 
 
+    var regBox = {
+        regEmail: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, //邮箱
+        regTel: /^[0-9]*$/
+    }
+    $("#reset").click(function(){
+    	reset();
+    });
 	$submit.click(function(){
-		$("#msabox").hide();
-		if($inputemail.val() ==""){
-			$("#msabox").find("#msg").html("Email can not be null!");
-			$("#msabox").show();
+		hidemsg();
+		$("#contactForm .form-control").each(function(){
+			if($(this).val() == ""){
+				showmsg($(this).attr("name") + " can't be null!",$(this));
+				return false;
+			}
+		});
+		if(!(regBox.regEmail.test($email.val()))){
+			showmsg("Please enter a valid email!",$email);
 			return false;
 		}
-		if($inputfirstname.val() ==""){
-			$("#msabox").find("#msg").html("firstname can not be null!");
-			$("#msabox").show();
+		if(!(regBox.regTel.test($phone.val()))){
+			showmsg("Please enter a valid phone!",$phone);
 			return false;
-		}
-		if($inputlastname.val() ==""){
-			$("#msabox").find("#msg").html("lastname can not be null!");
-			$("#msabox").show();
-			return false;
-		}
-		if($inputcontent.val() ==""){
-			$("#msabox").find("#msg").html("content can not be null!");
-			$("#msabox").show();
-			return false;
-		}	
-		if($phone.val() ==""){
-			$("#msabox").find("#msg").html("phone can not be null!");
-			$("#msabox").show();
-			return false;
-		}								
+		}		
+        $.ajax({
+			url: "${base}/contact/save.jhtml",
+			type: "POST",
+			data:  {
+                email: $email.val(),
+                content: $content.val(),
+                firstname: $firstname.val(),
+                lastname: $lastname.val(),
+                company: $company.val(),
+                phone:$phone.val()
+            },
+			dataType: "json",
+			cache: false,
+			success: function(res) {
+				if(res.type == "error"){
+					showmsg(res.content);					
+				}else{			
+					$alert.removeClass("alert-danger").addClass("alert-success");
+					showmsg(res.content);
+					reset();
+					$submit.unbind("click");
+				}
+				
+			}
+		});				
 	});
+	function reset(){
+		$("input[type = text]").val('');
+		$("textarea").val('');
+	}
+	function showmsg(msg,$p){
+		if($p){
+			$p.closest("div").addClass("has-error");
+		}
+		$msabox.find("#msg").html(msg);
+		$msabox.show();
+	}	
+	function hidemsg(){
+		$msabox.hide();
+		$(".form-group").find("div").removeClass("has-error");
+	}
 });
+
 </script>
 </html>
