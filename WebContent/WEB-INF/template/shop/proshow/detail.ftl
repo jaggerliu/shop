@@ -171,8 +171,8 @@
                                                 </tr>
                                                 [#list product.siblings as product]
                                                 <tr>
-                                                   <td><a href="${base}/${product.path}">${product.sn}</a></td>
-                                                   <td><a href="${base}/${product.path}">${product.name}[#list product.specificationValues as specificationValue][${specificationValue.name}]&nbsp;[/#list]</a></td>  
+                                                   <td><a href="${base}${product.path}">${product.sn}</a></td>
+                                                   <td><a href="${base}${product.path}">${product.name}[#list product.specificationValues as specificationValue][${specificationValue.name}]&nbsp;[/#list]</a></td>  
                                                    <td>${product.model}</td>  
                                                 	[#list product.specificationValues as specificationValues]
                                                     	<td>${specificationValues.name}</td>    
