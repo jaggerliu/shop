@@ -25,7 +25,7 @@
                     <div id="content" class="col-sm-12">
                         <h1 class="title">Search - ${productKeyword}</h1>
                         <label>Search Criteria</label>
-                        <form id="productSearchForm" action="${base}/product/search.jhtml" method="get">
+                        <form id="SearchForm" action="${base}/product/search.jhtml" method="get">
                         <div class="row">                     
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" placeholder="Keywords" value="${productKeyword}" name="keyword">
@@ -62,7 +62,6 @@
                                 </div>
                                 <div class="col-sm-2 text-right">
 		                            <select id="input-limit" class="form-control" name="pageSize" value="${pageSize}">
-		                             <option value="10" [#if page.pageSize == 20]selected="selected"[/#if]>10</option>
 					                  <option value="20" [#if page.pageSize == 20]selected="selected"[/#if]>20</option>
 					                  <option value="25" [#if page.pageSize == 25]selected="selected"[/#if]>25</option>
 					                  <option value="50" [#if page.pageSize == 50]selected="selected"[/#if]>50</option>
@@ -114,7 +113,7 @@
 </body>
 <script type="text/javascript">
 $().ready(function() {
-	var $productSearchForm = $("#productSearchForm");
+	var $productSearchForm = $("#SearchForm");
 	var $pageNumber = $("#pageNumber");
 	var $inputsort = $("#input-sort");
 	var $inputlimit = $("#input-limit");

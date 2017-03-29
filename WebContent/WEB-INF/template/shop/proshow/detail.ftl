@@ -64,7 +64,7 @@
                                 <div class="col-sm-6">
                                     <div class="image">
                                     [#if product.productImages?has_content]
-                                    	<img class="img-responsive" itemprop="image" id="zoom_01" src="${product.productImages[0].medium}" title="${product.name}" alt="${product.name}" data-zoom-image="${product.productImages[0].large}"/> 
+                                    	<img class="img-responsive" itemprop="image" style:"width:350px;height:350px" id="zoom_01" src="${product.productImages[0].medium}" title="${product.name}" alt="${product.name}" data-zoom-image="${product.productImages[0].large}"/> 
                                     [#else]
                                     	<img class="img-responsive" src="${setting.defaultMediumProductImage}" />
                                     [/#if]
@@ -73,7 +73,7 @@
                                     <div class="image-additional" id="gallery_01">
                                     [#if product.productImages?has_content]
                                     	[#list product.productImages as productImage]
-                                        	<a class="thumbnail" href="#" data-zoom-image="${product.productImages[0].large}" data-image="${product.productImages[0].medium}" title="${product.name}"> <img style:"width:66px;height:66px" src="${productImage.thumbnail}" title="${product.name}" alt="${product.name}" /></a>
+                                        	<a class="thumbnail" href="#" data-zoom-image="${productImage.large}" data-image="${productImage.medium}" title="${product.name}"> <img style:"width:66px;height:66px" src="${productImage.thumbnail}" title="${product.name}" alt="${product.name}" /></a>
                                     	[#if productImage_index ==4 ]
                                     	[#break]
                                     	[/#if]
